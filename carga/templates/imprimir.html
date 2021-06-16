@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<!--
+<!doctype html>
+<html lang="es">
+-->
+{% load numletras %}
+<p></p>
+<p></p>
+<p style="text-align: right;">Resistencia, <strong>{{object.poliza_fecha}}</strong></p>
+<p style="text-align: right;"><strong></strong></p>
+<p style="text-align: left;">{{object.poliza_area}}</p>
+<p style="text-align: left;">{{object.poliza_receptor}}</p>
+<p style="text-align: left;"><span style="text-decoration: underline;">Su Despacho:</span></p>
+<p style="text-align: right;"><span style="text-decoration: underline;">REF:</span> Expediente N&deg; {{object.poliza_expediente}}</p>
+<p style="text-align: right;"></p>
+<p style="text-align: left;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+<p lang="es-ES" class="western" align="justify">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Adjunto a la presente, remito a Ud. el Expediente de referencia, conteniendo <b>P&oacute;liza de Seguro de Cauci&oacute;n <span>{{object.poliza_concepto}}</span>&nbsp;Obra P&uacute;blica</b> conforme a las siguientes especificaciones:</p>
+<br></br>
+<p align="justify"><span><u><b>PÓLIZA N°:</u> {{object.poliza_numero}} - {{object.poliza_anexo}}</span></b></p>
+<p align="justify"><span><u><b>RECIBO DE PAGO N°:</u> {{object.poliza_recibo}} ({{object.poliza_aseguradora}}) ORIGINAL.</span></b></p>
+<p align="justify"><span><u><b>OBJETO DE LA POLIZA - OBRA:</u> {{object.poliza_obra_nombre}} </span></b></p>
+<p align="justify"><span><u><b>EXPEDIENTE N°:</u> {{object.poliza_obra_expediente}}</span></b></p>
+<p align="justify"><span><u><b>CONVENIO ESPECIFICO:</u> {{object.poliza_obra_convenio}}</span></b></p>
+<p align="justify"><span><u><b>ENTIDAD / TOMADOR:</b></u> {{object.poliza_tomador}} <b>CUIT:</b> {{object.poliza_tomador.empresa_cuit|cuit}}</span></p>
+<p align="justify"><span><u><b>SUMA SUSTITUIDA POR LA POLIZA:</b></u></span><span style="text-transform: uppercase"> ${{object.poliza_monto_pesos}} ({{object.poliza_monto_pesos|numletras}})</span></p>
+<p align="justify"><span><u><b>SUMA SUSTITUIDA POR LA POLIZA(UVI):</b></u></span><span style="text-transform: uppercase"> {{object.poliza_monto_uvi|default_if_none:'-'}}</span></p>
+<br></br>
+<p></p>
+<p align="justify" style="text-align: center;">Atentamente.-</p>
+<br></br>
+<br></br>
+<br></br>
+<table border="0" style="border-collapse: collapse; width: 100%;">
+<tbody>
+<tr>
+<td style="width: 50%;">
+<p style="text-align: center;">{{request.user.first_name}} {{request.user.last_name}}<br /> Departamento de Certificaciones<br />GERENCIA OPERATIVA<br />I.P.D.U.V.</p>
+</td>
+<td style="width: 50%;">Ing. Gladys T. Hardy</td>
+</tr>
+</tbody>
+</table>
+
+<!-- </html> -->
+{% endblock %}

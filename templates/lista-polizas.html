@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+
+<table id="lista-polizas" class="display cell-border compact"style="width:100%">
+<thead>
+<tr>
+	<th data-data="id"> ID </th>
+	<th data-data="poliza_fecha"> Fecha </th>
+	<th data-data="poliza_receptor.receptor_nombre" data-name="poliza_receptor.receptor_nombre"> Receptor </th>
+	<th data-data="poliza_area.area_nombre" data-name="poliza_area.area_nombre"> Area </th>
+	<th data-data="poliza_expediente"> Expediente </th>
+	<th data-data="poliza_concepto"> Concepto de Póliza </th>
+	<th data-data="poliza_numero"> Número de Póliza </th>
+	<th data-data="poliza_anexo"> Anexo de Póliza </th>
+	<th data-data="poliza_recibo"> Recibo de Pago </th>
+	<th data-data="poliza_aseguradora.aseguradora_nombre" data-name="poliza_aseguradora.aseguradora_nombre"> Entidad Aseguradora </th>
+	<th data-data="poliza_obra_nombre"> Obra </th>
+	<th data-data="poliza_obra_convenio"> Conveio Específico </th>
+	<th data-data="poliza_obra_expediente"> Expediente Obra </th>
+	<th data-data="poliza_tomador.empresa_nombre" data-name="poliza_tomador.empresa_nombre"> Empresa/Tomador </th>
+	<th data-data="poliza_monto_pesos"> Monto Sustituido </th>
+	<th data-data="poliza_monto_uvi"> UVI </th>
+</tr>
+</thead>
+</table>
+
+<script>
+$(document).ready( function() {
+    var table = $('#lista-polizas').DataTable({
+		'serverSide': true,
+        language: {url: 'https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json'},
+		'ajax': '/api/api/polizas/?format=datatables',
+		"lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
+        "dom": '<"top"if>rt<"bottom"lp><"clear">',
+		"order": [[1, "desc"]],
+		"columnDefs": [{"targets": 0, "data": "id", "render": function ( data, type, row, meta ) {
+      	return '<p><a href="/polizas/update/'+data+'">Editar</a></p><p><a href="/polizas/imprimir/'+data+'">Imprimir</a></p>';} }]
+		
+	});
+});
+</script>
+
+{% endblock %}

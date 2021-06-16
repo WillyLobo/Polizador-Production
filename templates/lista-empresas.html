@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<table id="lista-empresas" class="display cell-border compact"style="width:100%">
+<thead>
+<tr>
+	<th data-data="id"> ID </th>
+	<th data-data="empresa_nombre"> Nombre </th>
+	<th data-data="empresa_cuit"> CUIT </th>
+	<th data-data=""> Acciones </th>
+</tr>
+</thead>
+</table>
+
+<script>
+$(document).ready( function() {
+    var table = $('#lista-empresas').DataTable({
+		'serverSide': true,
+        language: {url: 'https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json'},
+		'ajax': '/api/api/empresas/?format=datatables',
+		"lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
+        "dom": '<"top"if>rt<"bottom"lp><"clear">',
+		"columnDefs": [{"targets": 3, "data": "id", "render": function ( data, type, row, meta ) {
+      	return '<p><a href="/polizas/crear/empresa/'+data+'">Editar</a></p>';} }]
+		
+	});
+});
+</script>
+
+{% endblock %}
