@@ -1,6 +1,7 @@
 # Personal ignores
 SECRET.*
 DBSECRET.*
+manage.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
