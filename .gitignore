@@ -1,6 +1,6 @@
 # Personal ignores
-SECRET.txt
-DBSECRET.txt
+SECRET.TXT
+DBSECRET.TXT
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
