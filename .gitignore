@@ -1,7 +1,7 @@
 # Personal ignores
 SECRET.*
 DBSECRET.*
-manage*.*
+*manage*
 settings-local.py
 
 # Byte-compiled / optimized / DLL files

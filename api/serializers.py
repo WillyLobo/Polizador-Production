@@ -31,7 +31,8 @@ class PolizaAPI(serializers.ModelSerializer):
 	poliza_tomador          = EmpresaAPI()
 	poliza_monto_pesos		= serializers.DecimalField(max_digits=12, decimal_places=2, localize=True)
 	poliza_monto_uvi		= serializers.DecimalField(max_digits=12, decimal_places=2, localize=True)
-	
+	poliza_concepto			= serializers.CharField(source="get_poliza_concepto_display")
+
 	class Meta:
 		model = models.Poliza
 		fields = "__all__"
