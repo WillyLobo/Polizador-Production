@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = os.environ.get("SECRET")
-with open("/var/www/Polizador-v3.0/polizador/SECRET.TXT") as f:
+with open("/var/www/Polizador-Production/polizador/SECRET.TXT") as f:
 	SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'polizador.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-with open("/var/www/Polizador-v3.0/polizador/DBSECRET.TXT") as s:
+with open("/var/www/Polizador-Production/polizador/DBSECRET.TXT") as s:
         DBSECRET = s.read().strip()
 DATABASES = {
     'default': {
