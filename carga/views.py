@@ -28,6 +28,7 @@ class CrearPoliza(LoginRequiredMixin, generic.CreateView):
 	model = models.Poliza
 	template_name = "crear.html"
 	form_class = forms.PolizaForm
+	success_url = reverse_lazy("carga:crear-poliza")
 
 class DetallePoliza(LoginRequiredMixin, generic.UpdateView):
 	login_url = "/"
@@ -36,7 +37,7 @@ class DetallePoliza(LoginRequiredMixin, generic.UpdateView):
 	model = models.Poliza
 	template_name = "crear.html"
 	form_class = forms.PolizaForm
-	
+	success_url = reverse_lazy("api:polizas")
 class CrearEmpresa(LoginRequiredMixin, generic.CreateView):
 	login_url = "/"
 	redirect_field_name = "login"
@@ -44,6 +45,7 @@ class CrearEmpresa(LoginRequiredMixin, generic.CreateView):
 	model = models.Empresa
 	template_name = "crear-empresa.html"
 	form_class = forms.EmpresaForm
+	success_url = reverse_lazy("carga:crear-empresa")
 
 class UpdateEmpresa(LoginRequiredMixin, generic.UpdateView):
 	login_url = "/"
@@ -52,6 +54,7 @@ class UpdateEmpresa(LoginRequiredMixin, generic.UpdateView):
 	model = models.Empresa
 	template_name = "crear-empresa.html"
 	form_class = forms.EmpresaForm
+	success_url = reverse_lazy("api:polizas")
 
 # Import/export plugin
 def export(request):

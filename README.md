@@ -4,3 +4,4 @@
 # TODO List: #
 
 1. Add Recover & Change password functions/templates.
+2. Add success_url to CreateViews
