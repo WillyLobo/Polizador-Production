@@ -19,6 +19,7 @@ class EmpresaAdmin(ImportExportMixin, admin.ModelAdmin):
 
 class PolizaAdmin(ImportExportMixin, admin.ModelAdmin):
 	resource_class = resources.PolizaResource
+	list_display = ("poliza_receptor", "poliza_concepto", "poliza_numero", "poliza_tomador")
 
 admin.site.register(models.Receptor, ReceptorAdmin)
 admin.site.register(models.Area, AreaAdmin)

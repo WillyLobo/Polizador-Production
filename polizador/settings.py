@@ -30,7 +30,7 @@ with open("/var/www/Polizador-Production/polizador/SECRET.TXT") as f:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["willylobo.net.ar"]
+ALLOWED_HOSTS = ["www.willylobo.net.ar", "willylobo.net.ar"]
 
 
 # Application definition
