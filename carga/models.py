@@ -51,6 +51,7 @@ class Poliza(models.Model):
     )
 
     class Meta:
+        constraints = [models.UniqueConstraint(fields=["poliza_numero", "poliza_aseguradora","poliza_receptor"], name="poliza-constraint")]
         verbose_name = "Póliza"
         verbose_name_plural = "Pólizas"
 

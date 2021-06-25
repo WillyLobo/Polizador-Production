@@ -3,5 +3,6 @@
 
 # TODO List: #
 
-1. Add Recover & Change password functions/templates.
-2. Add success_url to CreateViews
+1. [ ] Add Recover & Change password functions/templates.
+2. [x] Add success_url to CreateViews.
+3. [x] Make UniqueContraint for polizas.
