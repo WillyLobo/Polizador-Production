@@ -95,10 +95,11 @@ form{
 {% if request.user.is_authenticated %}
     <meta http-equiv="REFRESH" content="0;url={% url "api:polizas" %}">
 {% endif %}
+{% load static %}
 	<div class="container-fluid">
 		<div class="row main-content bg-success text-center">
 			<div class="col-md-4 text-center company__info">
-				<span class="company__logo"><img class="logolito" src="/media/logolito.jpg"></img></span>
+				<span class="company__logo"><img class="logolito" src="{% static "/logolito.jpg" %}"></img></span>
 			</div>
 			<div class="col-md-8 col-xs-12 col-sm-12 login_form ">
 				<div class="container-fluid">
