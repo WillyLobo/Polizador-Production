@@ -44,3 +44,27 @@ class PolizaResource(resources.ModelResource):
 			"poliza_monto_pesos",
 			"poliza_monto_uvi",
 		)
+
+class ProgramaResource(resources.ModelResource):
+	class Meta:
+		model = models.Programa
+
+class DepartamentoResource(resources.ModelResource):
+	class Meta:
+		model = models.Departamento
+
+class LocalidadResource(resources.ModelResource):
+	class Meta:
+		model = models.Localidad
+
+class MunicipioResource(resources.ModelResource):
+	class Meta:
+		model = models.Municipio
+
+class ObraResource(resources.ModelResource):
+	class Meta:
+		model = models.Obra
+
+class CertificadoResource(resources.ModelResource):
+	class Meta:
+		model = models.Certificado

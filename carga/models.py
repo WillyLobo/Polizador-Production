@@ -51,7 +51,7 @@ class Poliza(models.Model):
     )
 
     class Meta:
-        constraints = [models.UniqueConstraint(fields=["poliza_numero", "poliza_aseguradora","poliza_receptor"], name="poliza-constraint")]
+        constraints = [models.UniqueConstraint(fields=["poliza_fecha", "poliza_numero", "poliza_aseguradora","poliza_receptor"], name="poliza-constraint")]
         verbose_name = "Póliza"
         verbose_name_plural = "Pólizas"
 
@@ -73,3 +73,85 @@ class Poliza(models.Model):
     
     def get_absolute_url(self):
         return f"/polizas/update/{self.id}"
+
+class Programa(models.Model):
+    class Meta:
+        verbose_name = "Progrma"
+        verbose_name_plural = "Programas"
+    
+    programa_nombre = models.CharField(max_length=100)
+
+class Departamento(models.Model):
+	class Meta:
+		ordering			= ["departamento_nombre"]
+		verbose_name_plural = "Departamentos"
+
+	id					= models.IntegerField(unique=True, primary_key=True)
+	departamento_nombre = models.TextField("Nombre Departamento", unique=True)
+	
+	def __str__(self):
+		return self.departamento_nombre
+
+class Localidad(models.Model):
+	class Meta:
+		ordering			= ["localidad_nombre"]
+		verbose_name_plural = "Localidades"
+
+	localidad_nombre		= models.TextField("Nombre Localidad", unique=True)
+	id                      = models.IntegerField(unique=True, primary_key=True) 
+	localidad_centroide_lat	= models.DecimalField(max_digits=15, decimal_places=13,blank=True, null=True)
+	localidad_centroide_lon	= models.DecimalField(max_digits=15, decimal_places=13,blank=True, null=True)
+	localidad_funcion       = models.CharField(max_length=40,blank=True, null=True)
+	localidad_departamento	= models.ForeignKey("Departamento", on_delete=models.RESTRICT)
+	localidad_municipio     = models.ForeignKey("Municipio", on_delete=models.CASCADE)
+
+	def __str__(self):
+		return self.localidad_nombre
+		# return "{} - Departamento {}".format(self.localidad_nombre, self.localidad_departamento)
+
+class Municipio(models.Model):
+	class Meta:
+		ordering 			= ["municipio_nombre"]
+		verbose_name_plural = "Municipios"
+	
+	municipio_nombre        = models.CharField(max_length=40, unique=True)
+	id                      = models.IntegerField(unique=True, primary_key=True)
+	municipio_departamento  = models.ForeignKey("Departamento", on_delete=models.CASCADE)
+	
+	def __str__(self):
+		return self.municipio_nombre
+
+
+class Obra(models.Model):
+    class Meta:
+        verbose_name = "Obra"
+        verbose_name_plural = "Obras"
+    
+    obra_nombre			= models.TextField("Nombre de la Obra tal como figura en el contrato")
+    obra_soluciones		= models.DecimalField("Cantidad de soluciones", max_digits=4, decimal_places=0, null=True, blank=True)
+    obra_empresa		= models.ForeignKey("Empresa", on_delete=models.RESTRICT, verbose_name="Empresa")
+    obra_localidad		= models.ForeignKey("Localidad", on_delete=models.RESTRICT)
+    obra_programa		= models.ForeignKey("Programa", on_delete=models.RESTRICT)
+    obra_convenio		= models.CharField("Convenio/ACU", max_length=60, blank=True, null=True)
+    obra_expediente 	= models.CharField("Expediente", max_length=17)
+	
+class Certificado(models.Model):
+    
+    class Meta:
+        verbose_name = "Certificado"
+        verbose_name_plural = "Certificados"
+
+    certificado_programa            = models.ForeignKey("Programa", on_delete=models.CASCADE)
+    certificado_obra                = models.ForeignKey("Obra", on_delete=models.CASCADE)
+    certificado_localidad           = models.ForeignKey("Localidad", on_delete=models.CASCADE)
+    certificado_empresa             = models.ForeignKey("Empresa", on_delete=models.CASCADE)
+    certificado_rubro_obra          = models.DecimalField("Certificado de Obra N°", max_digits=3, decimal_places=0, null=True, blank=True)
+    certificado_rubro_anticipo      = models.DecimalField("Certificado de Anticipo N°", max_digits=3, decimal_places=0, null=True, blank=True)
+    certificado_rubro_devanticipo   = models.DecimalField("Certificado de Devolución de Anticipo N°", max_digits=3, decimal_places=0, null=True, blank=True)
+    certificado_rubro_691           = models.DecimalField("Certificado de Redeterminación Decreto N°691/16 N°", max_digits=3, decimal_places=0, null=True, blank=True)
+    certificado_rubro_Terreno       = models.DecimalField("Certificado de Terreno | Cuota N°", max_digits=3, decimal_places=0, null=True, blank=True)
+    certificado_rubro_recomposicion = models.DecimalField("Certificado de Recomposición Período Anterior N°", max_digits=3, decimal_places=0, null=True, blank=True)
+    certificado_expediente          = models.CharField("Número de Expediente", max_length=17)
+    certificado_fecha               = models.DateField("Fecha de Salida")
+    certificado_monto_pesos         = models.DecimalField("Monto en Pesos", max_digits=12, decimal_places=2, null=True, blank=True)
+    certificado_monto_pesos         = models.DecimalField("Monto en UVI", max_digits=12, decimal_places=2, null=True, blank=True)
