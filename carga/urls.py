@@ -12,6 +12,7 @@ urlpatterns = [
 	path("update/<pk>", views.UpdatePoliza.as_view(), name="update"),
 	path("crear/poliza/", views.CrearPoliza.as_view(), name="crear-poliza"),
 	path("crear/empresa/", views.CrearEmpresa.as_view(), name="crear-empresa"),
-	path("crear/empresa/<pk>", views.UpdateEmpresa.as_view(), name="update-empresa")
-
+	path("crear/empresa/<pk>", views.UpdateEmpresa.as_view(), name="update-empresa"),
+	path("crear/obra/", views.CrearObra.as_view(), name="crear-obra"),
+	
 ]

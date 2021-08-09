@@ -17,6 +17,10 @@ def index(request):
 def listaempresas(request):
 	return render(request, "lista-empresas.html")
 
+@login_required(redirect_field_name="login")
+def listaobras(request):
+	return render(request, "lista-obras.html")
+
 # class PolizaDetail(APIView):
 # 	renderer_classes = [TemplateHTMLRenderer]
 # 	template_name = "test.html"
@@ -40,3 +44,9 @@ class EmpresaViewSet(LoginRequiredMixin, viewsets.ReadOnlyModelViewSet):
 	queryset = models.Empresa.objects.all().order_by("-pk")
 	serializer_class = serializers.EmpresaAPI
 
+class ObraViewSet(LoginRequiredMixin, viewsets.ReadOnlyModelViewSet):
+	login_url = "/"
+	redirect_field_name = "login"
+
+	queryset = models.Obra.objects.all().order_by("-pk")
+	serializer_class = serializer_class = serializers.ObraAPI

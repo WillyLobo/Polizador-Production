@@ -12,11 +12,13 @@ app_name = "api"
 router = DefaultRouter()
 router.register(r"polizas", restviews.PolizaViewSet)
 router.register(r"empresas", restviews.EmpresaViewSet)
+router.register(r"obras", restviews.ObraViewSet)
 
 urlpatterns = [
 	url(r"^api/", include(router.urls)),
 	url("polizas/", restviews.index, name="polizas"),
-	url("empresas/", restviews.listaempresas, name="empresas")
+	url("empresas/", restviews.listaempresas, name="empresas"),
+	url("obras/", restviews.listaobras, name="obras")
 	#path("test/<pk>", restviews.PolizaDetail.as_view(), name="profile-detail")
 ]
 

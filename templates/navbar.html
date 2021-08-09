@@ -61,12 +61,20 @@
 		    <ul class="dropdown-menu">
 			  <li><a class="dropdown-item" href="{% url "api:polizas" %}"> Listar Pólizas </a></li>
 			  <li><a class="dropdown-item" href="{% url "api:empresas" %}"> Listar Empresas </a></li>
+			  <li><a class="dropdown-item" href="{% url "api:obras" %}"> Listas Obras </a></li> 
 		    </ul>
 		</li>
 		<li class="nav-item dropdown">
 			<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">  Crear Nuevo  </a>
 		    <ul class="dropdown-menu">
 				<li><a class="dropdown-item" href="{% url "carga:crear-poliza" %}"> Crear Póliza </a></li>
+				<li><a class="dropdown-item" href="{% url "carga:crear-empresa" %}"> Crear Empresa </a></li>
+		    </ul>
+		</li>
+		<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">  Certificados  </a>
+		    <ul class="dropdown-menu">
+				<li><a class="dropdown-item" href="{% url "carga:crear-obra" %}"> Crear Obra </a></li>
 				<li><a class="dropdown-item" href="{% url "carga:crear-empresa" %}"> Crear Empresa </a></li>
 		    </ul>
 		</li>

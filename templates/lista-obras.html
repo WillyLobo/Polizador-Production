@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<table id="lista-obras" class="display cell-border compact"style="width:100%">
+<thead>
+<tr>
+	<th data-data="id"> ID </th>
+	<th data-data="obra_nombre"> Nombre </th>
+	<th data-data="obra_soluciones"> Cantidad de Soluciones </th>
+	<th data-data="obra_empresa.empresa_nombre" data-name="obra_empresa.empresa_nombre"> Empresa </th>
+	<th data-data="obra_localidad.localidad_nombre" data-name="obra_localidad.localidad_nombre"> Localidad </th>
+	<th data-data="obra_programa.programa_nombre" data-name="obra_programa.programa_nombre"> Programa </th>
+	<th data-data="obra_convenio"> Convenio/ACU </th>
+	<th data-data="obra_expediente"> Expediente </th>
+</tr>
+</thead>
+</table>
+
+<script>
+$(document).ready( function() {
+    var table = $('#lista-obras').DataTable({
+		'serverSide': true,
+        language: {url: 'https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json'},
+		'ajax': '/api/api/obras/?format=datatables',
+		"lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
+        "dom": '<"top"if>rt<"bottom"lp><"clear">',
+		"order": [[1, "desc"]],
+		"columnDefs": [{"targets": 0, "data": "id", "render": function ( data, type, row, meta ) {
+      	return '<p><a href="/obras/update/'+data+'">Editar</a></p><p><a href="/obras/imprimir/'+data+'">Imprimir</a></p>';} }]
+		
+	});
+});
+</script>
+
+{% endblock %}

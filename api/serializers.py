@@ -36,3 +36,47 @@ class PolizaAPI(serializers.ModelSerializer):
 	class Meta:
 		model = models.Poliza
 		fields = "__all__"
+
+class ProgramaAPI(serializers.ModelSerializer):
+	class Meta:
+		model = models.Programa
+		fields = "__all__"
+
+class DepartamentoAPI(serializers.ModelSerializer):
+	class Meta:
+		model = models.Departamento
+		fields = "__all__"
+
+class MunicipioAPI(serializers.ModelSerializer):
+	class Meta:
+		model = models.Municipio
+		fields = "__all__"
+
+	municipio_departamento	= DepartamentoAPI()
+
+class LocalidadAPI(serializers.ModelSerializer):
+	class Meta:
+		model = models.Localidad
+		fields = "__all__"
+
+	localidad_departamento	= DepartamentoAPI()
+	localidad_municipio		= MunicipioAPI()
+
+class ObraAPI(serializers.ModelSerializer):
+	class Meta:
+		model = models.Obra
+		fields = "__all__"
+	
+	obra_empresa	= EmpresaAPI()
+	obra_localidad	= LocalidadAPI()
+	obra_programa	= ProgramaAPI()
+
+class CertificadoAPI(serializers.ModelSerializer):
+	class Meta:
+		model = models.Certificado
+		fields = "__all__"
+	
+	certificado_programa	= ProgramaAPI()
+	certificado_obra		= ObraAPI()
+	certificado_localidad	= LocalidadAPI()
+	certificado_empresa		= EmpresaAPI()

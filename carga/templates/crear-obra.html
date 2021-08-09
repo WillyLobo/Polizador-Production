@@ -9,14 +9,17 @@
 {{ form.media.css }}
 
 <div class="container">
-<form action="{% url "carga:crear-empresa" %}" method="POST"> 
+<form action="{% url "carga:crear-obra" %}" method="POST"> 
 
 {% csrf_token %}
 {{ form.errors }}
-    <div class="row mx-md-n5"> {{form.empresa_nombre.label}} {{ form.empresa_nombre }} </div>
-    <div class="row mx-md-n5"> {{form.empresa_cuit.label}} {{ form.empresa_cuit }} </div>
-    <div class="row mx-md-n5"> {{form.empresa_titular.label}} {{ form.empresa_titular }} </div>
-    <div class="row mx-md-n5"> {{form.empresa_direccion.label}} {{ form.empresa_direccion }} </div>
+    <div class="row mx-md-n5"> {{form.obra_nombre.label}} {{ form.obra_nombre }} </div>
+    <div class="row mx-md-n5"> {{form.obra_soluciones.label}} {{ form.obra_soluciones }} </div>
+    <div class="row mx-md-n5"> {{form.obra_empresa.label}} {{ form.obra_empresa }} </div>
+    <div class="row mx-md-n5"> {{form.obra_localidad.label}} {{ form.obra_localidad }} </div>
+    <div class="row mx-md-n5"> {{form.obra_programa.label}} {{ form.obra_programa }} </div>
+    <div class="row mx-md-n5"> {{form.obra_convenio.label}} {{ form.obra_convenio }} </div>    
+    <div class="row mx-md-n5"> {{form.obra_expediente.label}} {{ form.obra_expediente }} </div>
     <input type='submit' value='Guardar' />
 </form>
 </div>
@@ -24,13 +27,6 @@
 {{ form.media.js }}
 
 <script>
-$(function () {
-    $.datetimepicker.setLocale('es');
-    $("#id_poliza_fecha").datetimepicker({
-    timepicker:false,
-    format: 'd/m/Y',
-    });
-  });
 $('select').select2().on("select2-close", function () {
     setTimeout(function() {
         $('.select2-container-active').removeClass('select2-container-active');

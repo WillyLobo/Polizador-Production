@@ -10,7 +10,7 @@ class LoginForm(AuthenticationForm):
 	def confirm_login_allowed(self, user):
 		pass
 
-class TomadorWidget(s2forms.ModelSelect2Widget):
+class EmpresaWidget(s2forms.ModelSelect2Widget):
 	search_fields = [
 		"empresa_nombre__icontains"
 	]
@@ -28,10 +28,18 @@ class PolizaForm(forms.ModelForm):
 		model = models.Poliza
 		fields = "__all__"
 		widgets = {
-			"poliza_tomador" : TomadorWidget
+			"poliza_tomador" : EmpresaWidget
 		}
 
 class EmpresaForm(forms.ModelForm):
 	class Meta:
 		model = models.Empresa
 		fields = "__all__"
+
+class ObraForm(forms.ModelForm):
+	class Meta:
+		model = models.Obra
+		fields = "__all__"
+		widgets = {
+			"obra_empresa" : EmpresaWidget
+		}

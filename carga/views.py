@@ -57,6 +57,16 @@ class UpdateEmpresa(LoginRequiredMixin, generic.UpdateView):
 	form_class = forms.EmpresaForm
 	success_url = reverse_lazy("api:empresas")
 
+class CrearObra(LoginRequiredMixin, generic.CreateView):
+	login_url = "/"
+	redirect_field_name = "login"
+
+	model = models.Obra
+	template_name = "crear-obra.html"
+	form_class = forms.ObraForm
+	success_url = reverse_lazy("api:obras")
+
+
 # Import/export plugin
 def export(request):
 	obra_resource = ObraResource()

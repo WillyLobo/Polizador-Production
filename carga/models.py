@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator
 
 # Create your models here.
 
@@ -37,8 +38,11 @@ class Empresa(models.Model):
         verbose_name = "Empresa"
         verbose_name_plural = "Empresas"
     
-    empresa_nombre  = models.CharField("Nombre Empresa Tomadora:", max_length=255)
-    empresa_cuit    = models.CharField("CUIT:", max_length=11, blank=True, null=True)
+    empresa_nombre      = models.CharField("Nombre Empresa Tomadora:", max_length=255)
+    empresa_cuit        = models.CharField("CUIT:", max_length=11, blank=True, null=True)
+    empresa_titular     = models.CharField("Titular de la Empresa", max_length=140, blank=True, null=True)
+    empresa_direccion   = models.CharField("Dirección de la Empresa", max_length=255, blank=True, null=True)
+	
 
     def __str__(self):
         return self.empresa_nombre
@@ -68,8 +72,8 @@ class Poliza(models.Model):
     poliza_obra_nombre      = models.TextField("Obra")
     poliza_obra_convenio    = models.CharField("Convenio", max_length=50, blank=True, null=True)
     poliza_obra_expediente  = models.CharField("Número de Expediente de la Obra", max_length=17, blank=True, null=True)
-    poliza_monto_pesos      = models.DecimalField("Monto Sustituido Pesos", max_digits=12, decimal_places=2)
-    poliza_monto_uvi        = models.DecimalField("Monto Sustituido UVI", max_digits=12, decimal_places=2, blank=True, null=True)
+    poliza_monto_pesos      = models.DecimalField("Monto Sustituido Pesos", max_digits=12, decimal_places=2, validators=[MinValueValidator(0)])
+    poliza_monto_uvi        = models.DecimalField("Monto Sustituido UVI", max_digits=12, decimal_places=2, blank=True, null=True, validators=[MinValueValidator(0)])
     
     def get_absolute_url(self):
         return f"/polizas/update/{self.id}"
@@ -80,6 +84,9 @@ class Programa(models.Model):
         verbose_name_plural = "Programas"
     
     programa_nombre = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.programa_nombre
 
 class Departamento(models.Model):
 	class Meta:
@@ -134,6 +141,9 @@ class Obra(models.Model):
     obra_programa		= models.ForeignKey("Programa", on_delete=models.RESTRICT)
     obra_convenio		= models.CharField("Convenio/ACU", max_length=60, blank=True, null=True)
     obra_expediente 	= models.CharField("Expediente", max_length=17)
+
+    def __str__(self):
+        return f"{self.obra_nombre} - {self.obra_localidad}"
 	
 class Certificado(models.Model):
     
@@ -153,5 +163,5 @@ class Certificado(models.Model):
     certificado_rubro_recomposicion = models.DecimalField("Certificado de Recomposición Período Anterior N°", max_digits=3, decimal_places=0, null=True, blank=True)
     certificado_expediente          = models.CharField("Número de Expediente", max_length=17)
     certificado_fecha               = models.DateField("Fecha de Salida")
-    certificado_monto_pesos         = models.DecimalField("Monto en Pesos", max_digits=12, decimal_places=2, null=True, blank=True)
-    certificado_monto_pesos         = models.DecimalField("Monto en UVI", max_digits=12, decimal_places=2, null=True, blank=True)
+    certificado_monto_pesos         = models.DecimalField("Monto en Pesos", max_digits=12, decimal_places=2, null=True, blank=True, validators=[MinValueValidator(0)])
+    certificado_monto_pesos         = models.DecimalField("Monto en UVI", max_digits=12, decimal_places=2, null=True, blank=True, validators=[MinValueValidator(0)])
