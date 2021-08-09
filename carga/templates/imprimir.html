@@ -20,8 +20,8 @@
 <p align="justify" style="font-size: 12px;"><span><u><b>PÓLIZA N°:</u> {{object.poliza_numero}} - {{object.poliza_anexo}}</span></b></p>
 <p align="justify" style="font-size: 12px;"><span><u><b>RECIBO DE PAGO N°:</u> {{object.poliza_recibo}} ({{object.poliza_aseguradora}}) ORIGINAL.</span></b></p>
 <p align="justify" style="font-size: 12px;"><span><u><b>OBJETO DE LA POLIZA - OBRA:</u> {{object.poliza_obra_nombre}} </span></b></p>
-<p align="justify" style="font-size: 12px;"><span><u><b>EXPEDIENTE DE LA OBRA N°:</u> {{object.poliza_obra_expediente}}</span></b></p>
-<p align="justify" style="font-size: 12px;"><span><u><b>CONVENIO ESPECIFICO:</u> {{object.poliza_obra_convenio}}</span></b></p>
+<p align="justify" style="font-size: 12px;"><span><u><b>EXPEDIENTE DE LA OBRA N°:</u> {{object.poliza_obra_expediente|default_if_none:"-"}}</span></b></p>
+<p align="justify" style="font-size: 12px;"><span><u><b>CONVENIO ESPECIFICO:</u> {{object.poliza_obra_convenio|default_if_none:"-"}}</span></b></p>
 <p align="justify" style="font-size: 12px;"><span><u><b>ENTIDAD / TOMADOR:</b></u> {{object.poliza_tomador}} <b>CUIT:</b> {{object.poliza_tomador.empresa_cuit|cuit}}</span></p>
 <p align="justify" style="font-size: 12px;"><span><u><b>SUMA SUSTITUIDA POR LA POLIZA:</b></u></span><span style="text-transform: uppercase"> ${{object.poliza_monto_pesos}} ({{object.poliza_monto_pesos|numletras}})</span></p>
 <p align="justify" style="font-size: 12px;"><span><u><b>SUMA SUSTITUIDA POR LA POLIZA(UVI):</b></u></span><span style="text-transform: uppercase"> {{object.poliza_monto_uvi|default_if_none:'-'}}</span></p>

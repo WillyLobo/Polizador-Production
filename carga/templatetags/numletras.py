@@ -71,11 +71,14 @@ def cuit(value):
     """
     Filtro para dar formato tipo XX-#########-V
     """
-    tipo = str(value[0:2])
-    dni = str(value[2:10])
-    verificador = str(value[10])
-
-    return "{}-{}-{}".format(tipo, dni, verificador)
+    strvalue = str(value)
+    if len(strvalue) < 10:
+        return "00-00000000-0"
+    else:
+        tipo = strvalue[0:2]
+        dni = strvalue[2:10]
+        verificador = strvalue[10]
+        return "{}-{}-{}".format(tipo, dni, verificador)
 
 def numero_a_letras(numero):
     numero_entero = int(numero)
