@@ -21,10 +21,27 @@ $(document).ready( function() {
 		"lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]],
         "dom": '<"top"if>rt<"bottom"lp><"clear">',
 		"columnDefs": [{"targets": 3, "data": "id", "render": function ( data, type, row, meta ) {
-      	return '<p><a href="/polizas/crear/empresa/'+data+'">Editar</a></p>';} }]
-		
+      	return '<p><a href="/polizas/crear/empresa/'+data+'">Editar</a></p>';} }];
 	});
-});
+		yadcf.init(table, [{
+					        column_number: 0
+					    }, {
+					        column_number: 1,
+			                filter_type: "text",
+					        exclude: true,
+					        exclude_label: '!(not)'
+					    }, {
+					        column_number: 2,
+					        filter_type: "auto_complete"
+					    }, {
+					        column_number: 3,
+					        filter_type: "range_number_slider",
+					        ignore_char: "-"
+					    }, {
+					        column_number: 4
+					    }]);
+					});
+					});
 </script>
 
 {% endblock %}

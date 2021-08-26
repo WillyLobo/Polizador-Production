@@ -16,7 +16,7 @@
     - [x] "Certificados"
     - [x] "Obra"
     - [x] "Programa"
-    - [ ] "Empresa"
+    - [x] "Empresa"
     - [x] "Localidad"
        - [x] Add parent models "Departamento" & "Municipio"
 2. [ ] Add api endpoint for "Certificados"
