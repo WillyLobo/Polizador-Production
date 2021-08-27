@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -68,8 +69,10 @@ class Poliza(models.Model):
     poliza_obra_nombre      = models.TextField("Obra")
     poliza_obra_convenio    = models.CharField("Convenio", max_length=50, blank=True, null=True)
     poliza_obra_expediente  = models.CharField("Número de Expediente de la Obra", max_length=17, blank=True, null=True)
-    poliza_monto_pesos      = models.DecimalField("Monto Sustituido Pesos", max_digits=12, decimal_places=2)
+    poliza_monto_pesos      = models.DecimalField("Monto Sustituido Pesos", max_digits=12, decimal_places=2, blank=True, null=True)
     poliza_monto_uvi        = models.DecimalField("Monto Sustituido UVI", max_digits=12, decimal_places=2, blank=True, null=True)
+    poliza_creador          = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    poliza_editor           = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name="poliza_editor", editable=False)
     
     def get_absolute_url(self):
         return f"/polizas/update/{self.id}"

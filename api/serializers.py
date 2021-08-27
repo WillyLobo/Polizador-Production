@@ -32,6 +32,8 @@ class PolizaAPI(serializers.ModelSerializer):
 	poliza_monto_pesos		= serializers.DecimalField(max_digits=12, decimal_places=2, localize=True)
 	poliza_monto_uvi		= serializers.DecimalField(max_digits=12, decimal_places=2, localize=True)
 	poliza_concepto			= serializers.CharField(source="get_poliza_concepto_display")
+	poliza_creador			= serializers.StringRelatedField()
+	poliza_editor			= serializers.StringRelatedField()
 
 	class Meta:
 		model = models.Poliza
