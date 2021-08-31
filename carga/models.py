@@ -130,20 +130,72 @@ class Municipio(models.Model):
 
 
 class Obra(models.Model):
+    COMPULSA = (
+        ("L", "Licitación Pública"),
+        ("P", "Licitación Privada"),
+        ("C", "Concurso de Precios"),
+        ("D", "Contratación Directa")
+    )
+    
     class Meta:
         verbose_name = "Obra"
         verbose_name_plural = "Obras"
     
-    obra_nombre			= models.TextField("Nombre de la Obra tal como figura en el contrato")
-    obra_soluciones		= models.DecimalField("Cantidad de soluciones", max_digits=4, decimal_places=0, null=True, blank=True)
-    obra_empresa		= models.ForeignKey("Empresa", on_delete=models.RESTRICT, verbose_name="Empresa")
-    obra_localidad		= models.ForeignKey("Localidad", on_delete=models.RESTRICT)
-    obra_programa		= models.ForeignKey("Programa", on_delete=models.RESTRICT)
-    obra_convenio		= models.CharField("Convenio/ACU", max_length=60, blank=True, null=True)
-    obra_expediente 	= models.CharField("Expediente", max_length=17)
-
+    obra_nombre			    = models.TextField("Nombre de la Obra tal como figura en el contrato")
+    obra_soluciones		    = models.DecimalField("Cantidad de soluciones", max_digits=4, decimal_places=0, null=True, blank=True)
+    obra_empresa		    = models.ForeignKey("Empresa", on_delete=models.CASCADE, verbose_name="Empresa")
+    obra_localidad		    = models.ForeignKey("Localidad", on_delete=models.CASCADE)
+    obra_grupo              = models.CharField("Grupo", max_length=4, blank=True, null=True)
+    obra_plazo              = models.CharField("Plazo de Ejecución", max_length=10, blank=True, null=True)
+    obra_programa		    = models.ForeignKey("Programa", on_delete=models.CASCADE)
+    obra_convenio		    = models.CharField("Convenio/ACU", max_length=60, blank=True, null=True)
+    obra_expediente 	    = models.CharField("Expediente", max_length=17)
+    obra_resolucion         = models.CharField("Resolución de Adjudicación", max_length=15, blank=True, null=True)
+    obra_licitacion_tipo    = models.CharField("Compulsa", max_length=1, choices=COMPULSA, blank=True, null=True)
+    obra_licitacion_numero  = models.DecimalField("Número de Licitación", max_digits=3, decimal_places=0, blank=True, null=True)
+    obra_licitacion_ano     = models.DecimalField("Año de Licitación", max_digits=4, decimal_places=0, blank=True, null=True)
+    obra_nomenclatura       = models.CharField("Nomenclatura Catastral", max_length=100, blank=True, null=True)  
+    obra_nomenclatura_plano = models.CharField("Número de Plano", max_length=10, blank=True, null=True)
+    obra_fecha_entrega      = models.DateField("Fecha de Entrega de la Obra", blank=True, null=True)
+    obra_fecha_contrato     = models.DateField("Fecha de Firma de Contrato", blank=True, null=True)
+    obra_expediente_costo   = models.CharField("Expediente de Costos", max_length=17, blank=True, null=True)
+    obra_inspector          = models.ManyToManyField("Agente", related_name="obra_inspector")
+    # obra_nomenclatura_secc
+    # obra_nomenclatura_ch
+    # obra_nomenclatura_qta
+    # obra_nomenclatura_fr
+    # obra_nomenclatura_mz
+    # obra_nomenclatura_pc
+    # obra_prototipos
+        # cantidad del prototipo
+        # superficie m2
+        # incremento por infraestructura
+        # uvi x m2
+    
     def __str__(self):
         return f"{self.obra_nombre} - {self.obra_localidad}"
+
+class Agente(models.Model):
+	class Meta:
+		verbose_name_plural = "Agentes"
+	
+	PROFESION = (
+		("A", "Arquitecto"),
+		("IC", "Ingeniero Civil"),
+		("IE", "Ingeniero Electromecánico"),
+		("MO", "Maestro Mayor de Obras")
+	)
+
+	agente_nombre 			= models.CharField("Nombre/s:", max_length=60)
+	agente_apellido			= models.CharField("Apellido/s:", max_length=60)
+	agente_dni				= models.DecimalField("DNI:", max_digits=9, decimal_places=0, blank=True, null=True, validators=[MinValueValidator(0)])
+	agente_telefono 		= models.CharField("Telefono:", max_length=20, blank=True, null=True)
+	agente_email 			= models.EmailField("Email:", blank=True,null=True)
+	agente_profesion		= models.CharField("Profesion", max_length=2, choices=PROFESION, default=None, blank=True, null=True)
+	agente_matricula		= models.CharField("Matricula Profesional", max_length=10, blank=True, null=True)
+	
+	def __str__(self):
+		return f"{self.agente_nombre} {self.agente_apellido}"
 	
 class Certificado(models.Model):
     

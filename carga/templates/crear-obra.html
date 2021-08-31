@@ -17,9 +17,21 @@
     <div class="row mx-md-n5"> {{form.obra_soluciones.label}} {{ form.obra_soluciones }} </div>
     <div class="row mx-md-n5"> {{form.obra_empresa.label}} {{ form.obra_empresa }} </div>
     <div class="row mx-md-n5"> {{form.obra_localidad.label}} {{ form.obra_localidad }} </div>
+    <div class="row mx-md-n5"> {{form.obra_grupo.label}} {{ form.obra_grupo }} </div>
+    <div class="row mx-md-n5"> {{form.obra_plazo.label}} {{ form.obra_plazo }} </div>
     <div class="row mx-md-n5"> {{form.obra_programa.label}} {{ form.obra_programa }} </div>
     <div class="row mx-md-n5"> {{form.obra_convenio.label}} {{ form.obra_convenio }} </div>    
     <div class="row mx-md-n5"> {{form.obra_expediente.label}} {{ form.obra_expediente }} </div>
+    <div class="row mx-md-n5"> {{form.obra_resolucion.label}} {{ form.obra_resolucion }} </div>
+    <div class="row mx-md-n5"> {{form.obra_licitacion_tipo.label}} {{ form.obra_licitacion_tipo }} </div>
+    <div class="row mx-md-n5"> {{form.obra_licitacion_numero.label}} {{ form.obra_licitacion_numero }} </div>
+    <div class="row mx-md-n5"> {{form.obra_licitacion_ano.label}} {{ form.obra_licitacion_ano }} </div>
+    <div class="row mx-md-n5"> {{form.obra_nomenclatura.label}} {{ form.obra_nomenclatura }} </div>
+    <div class="row mx-md-n5"> {{form.obra_nomenclatura_plano.label}} {{ form.obra_nomenclatura_plano }} </div>
+    <div class="row mx-md-n5"> {{form.obra_fecha_entrega.label}} {{ form.obra_fecha_entrega }} </div>
+    <div class="row mx-md-n5"> {{form.obra_fecha_contrato.label}} {{ form.obra_fecha_contrato }} </div>
+    <div class="row mx-md-n5"> {{form.obra_expediente_costo.label}} {{ form.obra_expediente_costo }} </div>
+    <div class="row mx-md-n5"> {{form.obra_inspector.label}} {{ form.obra_inspector }} </div>
     <input type='submit' value='Guardar' />
 </form>
 </div>
@@ -27,6 +39,17 @@
 {{ form.media.js }}
 
 <script>
+$(function () {
+    $.datetimepicker.setLocale('es');
+    $("#id_obra_fecha_entrega").datetimepicker({
+    timepicker:false,
+    format: 'd/m/Y',
+    });
+    $("#id_obra_fecha_contrato").datetimepicker({
+    timepicker:false,
+    format: 'd/m/Y',
+    });
+  });
 $('select').select2().on("select2-close", function () {
     setTimeout(function() {
         $('.select2-container-active').removeClass('select2-container-active');

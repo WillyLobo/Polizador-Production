@@ -65,6 +65,10 @@ class ObraResource(resources.ModelResource):
 	class Meta:
 		model = models.Obra
 
+class AgenteResource(resources.ModelResource):
+	class Meta:
+		model = models.Agente
+
 class CertificadoResource(resources.ModelResource):
 	class Meta:
 		model = models.Certificado

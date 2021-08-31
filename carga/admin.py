@@ -39,6 +39,9 @@ class MunicipioAdmin(ImportExportMixin, admin.ModelAdmin):
 class ObraAdmin(ImportExportMixin, admin.ModelAdmin):
 	resource_class = resources.ObraResource
 
+class AgenteAdmin(ImportExportMixin, admin.ModelAdmin):
+	resource_class = resources.AgenteResource
+
 class CertificadoAdmin(ImportExportMixin, admin.ModelAdmin):
 	resource_class = resources.CertificadoResource
 
@@ -52,4 +55,5 @@ admin.site.register(models.Departamento, DepartamentoAdmin)
 admin.site.register(models.Localidad, LocalidadAdmin)
 admin.site.register(models.Municipio, MunicipioAdmin)
 admin.site.register(models.Obra, ObraAdmin)
+admin.site.register(models.Agente, AgenteAdmin)
 admin.site.register(models.Certificado, CertificadoAdmin)

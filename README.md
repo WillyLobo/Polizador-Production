@@ -19,6 +19,8 @@
     - [x] "Empresa"
     - [x] "Localidad"
        - [x] Add parent models "Departamento" & "Municipio"
+    - [x] "Agentes"
+    - [ ] "Prototipos"
 2. [ ] Add api endpoint for "Certificados"
 3. [ ] Create views
     [ ] ListView
@@ -26,3 +28,4 @@
     [ ] UpdateView
 3. [ ] Create Datatables view of "Certificados" list.
 4. [x] Add Admin Import/Export functions for the models.
+5. [x] Add API endpoints for "Obras"

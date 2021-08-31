@@ -70,6 +70,7 @@ class ObraAPI(serializers.ModelSerializer):
 	obra_empresa	= EmpresaAPI()
 	obra_localidad	= LocalidadAPI()
 	obra_programa	= ProgramaAPI()
+	obra_inspector	= serializers.StringRelatedField(many=True)
 
 class CertificadoAPI(serializers.ModelSerializer):
 	class Meta:
