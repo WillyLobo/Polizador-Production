@@ -3,6 +3,7 @@ SECRET.*
 DBSECRET.*
 manage.py
 settings-local.py
+migrations/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
