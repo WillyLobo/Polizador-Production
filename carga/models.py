@@ -133,7 +133,6 @@ class Municipio(models.Model):
 	def __str__(self):
 		return self.municipio_nombre
 
-
 class Obra(models.Model):
     COMPULSA = (
         ("L", "Licitación Pública"),
