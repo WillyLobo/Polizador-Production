@@ -17,7 +17,7 @@
 <p style="text-align: left;font-size: 12px;"></p>
 <p lang="es-ES" class="western" align="justify" style="font-size:12px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Adjunto a la presente, remito a Ud. el Expediente de referencia, conteniendo <b>P&oacute;liza de Seguro de Cauci&oacute;n <span>{{object.get_poliza_concepto_display}}</span>&nbsp;Obra P&uacute;blica</b> conforme a las siguientes especificaciones:</p>
 <br></br>
-<p align="justify" style="font-size: 12px;"><span><u><b>PÓLIZA N°:</u> {{object.poliza_numero}} - {{object.poliza_anexo}}</span></b></p>
+<p align="justify" style="font-size: 12px;"><span><u><b>PÓLIZA N°:</u> {{object.poliza_numero}} - {{object.poliza_anexo|default_if_none:' '}}</span></b></p>
 <p align="justify" style="font-size: 12px;"><span><u><b>RECIBO DE PAGO N°:</u> {{object.poliza_recibo}} ({{object.poliza_aseguradora}}) ORIGINAL.</span></b></p>
 <p align="justify" style="font-size: 12px;"><span><u><b>OBJETO DE LA POLIZA - OBRA:</u> {{object.poliza_obra_nombre}} </span></b></p>
 <p align="justify" style="font-size: 12px;"><span><u><b>EXPEDIENTE DE LA OBRA N°:</u> {{object.poliza_obra_expediente|default_if_none:"-"}}</span></b></p>
