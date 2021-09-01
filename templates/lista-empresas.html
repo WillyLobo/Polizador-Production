@@ -26,6 +26,7 @@ $(document).ready( function() {
 		ajax: '/api/api/empresas/?format=datatables',
 		lengthMenu: [[25, 50, 100, -1], [25, 50, 100, "All"]],
         dom: '<"top"if>rt<"bottom"lp><"clear">',
+        order: [[1, "asc"]]
 		columnDefs: [{"targets": 3, "data": "id", "render": function ( data, type, row, meta ) {
       	return '<p><a href="/polizas/crear/empresa/'+data+'">Editar</a></p>';} }],
 		initComplete: function () {
