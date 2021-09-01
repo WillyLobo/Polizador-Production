@@ -99,7 +99,7 @@ class Departamento(models.Model):
 		verbose_name_plural = "Departamentos"
 
 	id					= models.IntegerField(unique=True, primary_key=True)
-	departamento_nombre = models.TextField("Nombre Departamento", unique=True)
+	departamento_nombre = models.TextField("Nombre Departamento")
 	
 	def __str__(self):
 		return self.departamento_nombre
@@ -109,7 +109,7 @@ class Localidad(models.Model):
 		ordering			= ["localidad_nombre"]
 		verbose_name_plural = "Localidades"
 
-	localidad_nombre		= models.TextField("Nombre Localidad", unique=True)
+	localidad_nombre		= models.TextField("Nombre Localidad")
 	id                      = models.IntegerField(unique=True, primary_key=True) 
 	localidad_centroide_lat	= models.DecimalField(max_digits=15, decimal_places=13,blank=True, null=True)
 	localidad_centroide_lon	= models.DecimalField(max_digits=15, decimal_places=13,blank=True, null=True)
@@ -126,7 +126,7 @@ class Municipio(models.Model):
 		ordering 			= ["municipio_nombre"]
 		verbose_name_plural = "Municipios"
 	
-	municipio_nombre        = models.CharField(max_length=40, unique=True)
+	municipio_nombre        = models.CharField(max_length=40)
 	id                      = models.IntegerField(unique=True, primary_key=True)
 	municipio_departamento  = models.ForeignKey("Departamento", on_delete=models.CASCADE)
 	
