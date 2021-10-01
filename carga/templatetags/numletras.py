@@ -195,9 +195,17 @@ def leer_millardos(numero):
     return '%s millones %s' % (leer_miles(millardo), leer_millones(millon))
 
 @register.filter(is_safe=True)
-def numletras(value):
+def nummoneda(value):
     try:
         value = int(value)
     except (TypeError, ValueError):
         return value
     return numero_a_moneda(value)
+
+@register.filter(is_safe=True)
+def numletras(value):
+    try:
+        value = int(value)
+    except (TypeError, ValueError):
+        return value
+    return numero_a_letras(value)

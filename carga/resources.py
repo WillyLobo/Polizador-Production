@@ -65,6 +65,10 @@ class ObraResource(resources.ModelResource):
 	class Meta:
 		model = models.Obra
 
+class PrototipoResource(resources.ModelResource):
+	class Meta:
+		model = models.Prototipo
+
 class AgenteResource(resources.ModelResource):
 	class Meta:
 		model = models.Agente

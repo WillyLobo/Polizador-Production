@@ -14,7 +14,7 @@ class Imprimir(LoginRequiredMixin, generic.DetailView):
 
 	model 			= models.Poliza
 	template_name 	= "imprimir.html"
-
+	
 class Listado(LoginRequiredMixin, generic.ListView):
 	login_url = "/"
 	redirect_field_name = "login"
@@ -81,8 +81,34 @@ class CrearObra(LoginRequiredMixin, generic.CreateView):
 	model = models.Obra
 	template_name = "crear-obra.html"
 	form_class = forms.ObraForm
+	success_url = reverse_lazy("carga:crear-obra")
+
+class UpdateObra(LoginRequiredMixin, generic.UpdateView):
+	login_url = "/"
+	redirect_field_name = "login"
+
+	model = models.Obra
+	template_name = "crear-obra.html"
+	form_class = forms.ObraForm
 	success_url = reverse_lazy("api:obras")
 
+class CrearCertificado(LoginRequiredMixin, generic.CreateView):
+	login_url = "/"
+	redirect_field_name = "login"
+
+	model = models.Certificado
+	template_name = "crear-certificado.html"
+	form_class = forms.CertificadoForm
+	success_url = reverse_lazy("carga:crear-certificado")
+
+class UpdateCertificado(LoginRequiredMixin, generic.UpdateView):
+	login_url = "/"
+	redirect_field_name = "login"
+
+	model = models.Certificado
+	template_name = "update-certificado.html"
+	form_class = forms.CertificadoForm
+	success_url = reverse_lazy("api:certificados")
 
 # Import/export plugin
 def export(request):

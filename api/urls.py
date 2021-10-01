@@ -13,12 +13,14 @@ router = DefaultRouter()
 router.register(r"polizas", restviews.PolizaViewSet)
 router.register(r"empresas", restviews.EmpresaViewSet)
 router.register(r"obras", restviews.ObraViewSet)
+router.register(r"certificados", restviews.CertificadoViewSet)
 
 urlpatterns = [
 	url(r"^api/", include(router.urls)),
 	url("polizas/", restviews.index, name="polizas"),
 	url("empresas/", restviews.listaempresas, name="empresas"),
-	url("obras/", restviews.listaobras, name="obras")
+	url("obras/", restviews.listaobras, name="obras"),
+	url("certificados/", restviews.listacertificados, name="certificados")
 	#path("test/<pk>", restviews.PolizaDetail.as_view(), name="profile-detail")
 ]
 

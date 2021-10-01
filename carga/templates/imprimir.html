@@ -5,6 +5,12 @@
 <html lang="es">
 -->
 {% load numletras %}
+<script>
+    function Imprimir(){
+        window.print();
+    }
+</script>
+<button onclick="Imprimir()"class="d-print-none"> Imprimir</button>
 <p></p>
 <p></p>
 <p style="text-align: right;font-size: 12px;">Resistencia, <strong>{{object.poliza_fecha}}</strong></p>
@@ -23,8 +29,8 @@
 <p align="justify" style="font-size: 12px;"><span><u><b>EXPEDIENTE DE LA OBRA N°:</u> {{object.poliza_obra_expediente|default_if_none:"-"}}</span></b></p>
 <p align="justify" style="font-size: 12px;"><span><u><b>CONVENIO ESPECIFICO:</u> {{object.poliza_obra_convenio|default_if_none:"-"}}</span></b></p>
 <p align="justify" style="font-size: 12px;"><span><u><b>ENTIDAD / TOMADOR:</b></u> {{object.poliza_tomador}} <b>CUIT:</b> {{object.poliza_tomador.empresa_cuit|cuit}}</span></p>
-<p align="justify" style="font-size: 12px;"><span><u><b>SUMA SUSTITUIDA POR LA POLIZA:</b></u></span><span style="text-transform: uppercase"> ${{object.poliza_monto_pesos}} ({{object.poliza_monto_pesos|numletras}})</span></p>
-<p align="justify" style="font-size: 12px;"><span><u><b>SUMA SUSTITUIDA POR LA POLIZA(UVI):</b></u></span><span style="text-transform: uppercase"> {{object.poliza_monto_uvi|default_if_none:'-'}}</span></p>
+<p align="justify" style="font-size: 12px;"><span><u><b>SUMA SUSTITUIDA POR LA POLIZA:</b></u></span><span style="text-transform: uppercase"> ${{object.poliza_monto_pesos}} ({{object.poliza_monto_pesos|nummoneda}})</span></p>
+<p align="justify" style="font-size: 12px;"><span><u><b>SUMA SUSTITUIDA POR LA POLIZA(UVI):</b></u></span><span style="text-transform: uppercase"> {{object.poliza_monto_uvi|default_if_none:'-'}} ({{object.poliza_monto_uvi|numletras|default_if_none:'-'}})</span></p>
 <br></br>
 <p></p>
 <p align="justify" style="text-align: center; font-size: 12px;">Atentamente.-</p>

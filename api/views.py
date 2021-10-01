@@ -21,6 +21,10 @@ def listaempresas(request):
 def listaobras(request):
 	return render(request, "lista-obras.html")
 
+@login_required(redirect_field_name="login")
+def listacertificados(request):
+	return render(request, "lista-certificados.html")
+
 # class PolizaDetail(APIView):
 # 	renderer_classes = [TemplateHTMLRenderer]
 # 	template_name = "test.html"
@@ -49,4 +53,12 @@ class ObraViewSet(LoginRequiredMixin, viewsets.ReadOnlyModelViewSet):
 	redirect_field_name = "login"
 
 	queryset = models.Obra.objects.all().order_by("-pk")
-	serializer_class = serializer_class = serializers.ObraAPI
+	serializer_class = serializers.ObraAPI
+
+class CertificadoViewSet(LoginRequiredMixin, viewsets.ReadOnlyModelViewSet):
+	login_url = "/"
+	redirect_field_name = "login"
+
+	queryset = models.Certificado.objects.all().order_by("-pk")
+	serializer_class = serializers.CertificadoAPI
+

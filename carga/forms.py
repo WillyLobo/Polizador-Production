@@ -43,3 +43,11 @@ class ObraForm(forms.ModelForm):
 		widgets = {
 			"obra_empresa" : EmpresaWidget
 		}
+
+class CertificadoForm(forms.ModelForm):
+	class Meta:
+		model = models.Certificado
+		fields = "__all__"
+		widgets = {
+			"certificado_empresa" : EmpresaWidget
+		}

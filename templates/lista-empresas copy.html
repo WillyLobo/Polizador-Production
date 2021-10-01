@@ -1,44 +1,34 @@
 {% extends "base.html" %}
 {% block content %}
 
-<table id="lista-obras" class="display cell-border compact"style="width:100%">
+<table id="lista-empresas" class="display cell-border compact"style="width:100%">
 <thead>
 <tr>
 	<th data-data="id"> ID </th>
-	<th data-data="obra_nombre"> Nombre </th>
-	<th data-data="obra_soluciones"> Cantidad de Soluciones </th>
-	<th data-data="obra_empresa.empresa_nombre" data-name="obra_empresa.empresa_nombre"> Empresa </th>
-	<th data-data="obra_localidad.localidad_nombre" data-name="obra_localidad.localidad_nombre"> Localidad </th>
-	<th data-data="obra_programa.programa_nombre" data-name="obra_programa.programa_nombre"> Programa </th>
-  <th data-data="obra_convenio"> Convenio/ACU </th>
-	<th data-data="obra_expediente"> Expediente </th>
-  <th data-data="obra_inspector" data-name="obra_inspector"> Inspector </th>
+	<th data-data="empresa_nombre"> Nombre </th>
+	<th data-data="empresa_cuit"> CUIT </th>
+	<th data-data=""> Acciones </th>
 </tr>
 </thead>
 <tfoot>
 	<th> ID </th>
 	<th> Nombre </th>
-	<th> Cantidad de Soluciones </th>
-	<th> Empresa </th>
-	<th> Localidad </th>
-	<th> Programa </th>
-  <th> Convenio/ACU </th>
-	<th> Expediente </th>
-  <th> Contrato </th>
+	<th> CUIT </th>
+	<th> Acciones </th>
 </tfoot>
 </table>
 
 <script>
 $(document).ready( function() {
-    var TableObra = $('#lista-obras').DataTable({
+    var TableEmpresa = $('#lista-empresas').DataTable({
 		serverSide: true,
         language: {url: 'https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json'},
-		ajax: '/api/api/obras/?format=datatables',
+		ajax: '/api/api/empresas/?format=datatables',
 		lengthMenu: [[25, 50, 100, -1], [25, 50, 100, "All"]],
         dom: '<"top"if>rt<"bottom"lp><"clear">',
         order: [[1, "asc"]],
-		columnDefs: [{"targets": 0, "data": "id", "render": function ( data, type, row, meta ) 
-		{ return '<p><a href="/polizas/crear/obra/'+data+'">Editar</a></p><p><a href=" ">Imprimir</a></p>';} }],
+		columnDefs: [{"targets": 3, "data": "id", "render": function ( data, type, row, meta ) 
+		{ return '<p><a href="/polizas/crear/empresa/'+data+'">Editar</a></p>';} }],
 		initComplete: function () {
             count = 0;
             this.api().columns().every( function () {
@@ -87,4 +77,5 @@ $(document).ready( function() {
 });
 });
 </script>
+
 {% endblock %}

@@ -14,5 +14,7 @@ urlpatterns = [
 	path("crear/empresa/", views.CrearEmpresa.as_view(), name="crear-empresa"),
 	path("crear/empresa/<pk>", views.UpdateEmpresa.as_view(), name="update-empresa"),
 	path("crear/obra/", views.CrearObra.as_view(), name="crear-obra"),
-	
+	path("crear/obra/<pk>", views.UpdateObra.as_view(), name="update-obra"),
+	path("crear/certificado/", views.CrearCertificado.as_view(), name="crear-certificado"),
+	path("crear/certificado/<pk>", views.UpdateCertificado.as_view(), name="update-certificado")
 ]

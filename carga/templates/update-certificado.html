@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- XDSoft DateTimePicker -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+
+{{ form.media.css }}
+
+<div class="container">
+<form action="{% url "carga:update-certificado" object.id %}" method="POST"> 
+
+{% csrf_token %}
+{{ form.errors }}
+    <div class="row mx-md-n5"> {{form.certificado_programa.label}} {{ form.certificado_programa }} </div>
+    <div class="row mx-md-n5"> {{form.certificado_obra.label}} {{ form.certificado_obra }} </div>
+    <div class="row mx-md-n5"> {{form.certificado_localidad.label}} {{ form.certificado_localidad }} </div>
+    <div class="row mx-md-n5"> {{form.certificado_empresa.label}} {{ form.certificado_empresa }} </div>
+    <div class="row mx-md-n5"> {{form.certificado_rubro_obra.label}} {{ form.certificado_rubro_obra }} </div>
+    <div class="row mx-md-n5"> {{form.certificado_rubro_anticipo.label}} {{ form.certificado_rubro_anticipo }} </div>
+    <div class="row mx-md-n5"> {{form.certificado_rubro_devanticipo.label}} {{ form.certificado_rubro_devanticipo }} </div>
+    <div class="row mx-md-n5"> {{form.certificado_rubro_691.label}} {{ form.certificado_rubro_691 }} </div>    
+    <div class="row mx-md-n5"> {{form.certificado_rubro_terreno.label}} {{ form.certificado_rubro_terreno }} </div>
+    <div class="row mx-md-n5"> {{form.certificado_rubro_recomposicion.label}} {{ form.certificado_rubro_recomposicion }} </div>
+    <div class="row mx-md-n5"> {{form.certificado_expediente.label}} {{ form.certificado_expediente }} </div>
+    <div class="row mx-md-n5"> {{form.certificado_fecha.label}} {{ form.certificado_fecha }} </div>
+    <div class="row mx-md-n5"> {{form.certificado_monto_pesos.label}} {{ form.certificado_monto_pesos }} </div>
+    <div class="row mx-md-n5"> {{form.certificado_monto_uvi.label}} {{ form.certificado_monto_uvi }} </div>
+    <input type='submit' value='Guardar' />
+</form>
+</div>
+
+{{ form.media.js }}
+
+<script>
+$(function () {
+    $.datetimepicker.setLocale('es');
+    $("#id_obra_fecha_entrega").datetimepicker({
+    timepicker:false,
+    format: 'd/m/Y',
+    });
+    $("#id_obra_fecha_contrato").datetimepicker({
+    timepicker:false,
+    format: 'd/m/Y',
+    });
+  });
+$('select').select2().on("select2-close", function () {
+    setTimeout(function() {
+        $('.select2-container-active').removeClass('select2-container-active');
+        $(':focus').blur(); 
+    }, 1);
+});
+</script>
+
+
+
+{% endblock %}

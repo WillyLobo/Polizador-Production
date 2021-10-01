@@ -74,6 +74,14 @@ class ObraAPI(serializers.ModelSerializer):
 	obra_programa	= ProgramaAPI()
 	obra_inspector	= serializers.StringRelatedField(many=True)
 
+class PrototipoAPI(serializers.ModelSerializer):
+	class Meta:
+		model = models.Prototipo
+		fields = "__all__"
+	
+	prototipo_obra = ObraAPI()
+	prototipo_tipo = serializers.CharField(source="get_prototipo_tipo_display")
+
 class CertificadoAPI(serializers.ModelSerializer):
 	class Meta:
 		model = models.Certificado
@@ -83,3 +91,5 @@ class CertificadoAPI(serializers.ModelSerializer):
 	certificado_obra		= ObraAPI()
 	certificado_localidad	= LocalidadAPI()
 	certificado_empresa		= EmpresaAPI()
+	certificado_monto_pesos = serializers.DecimalField(max_digits=12, decimal_places=2, localize=True) 
+	certificado_monto_uvi	= serializers.DecimalField(max_digits=12, decimal_places=2, localize=True)

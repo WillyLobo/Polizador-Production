@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row">
+  <div class="col-sm-12">
+      <table id="lista-certificados" class="table table-striped table-bordered" style="width:100%">
+          <thead>
+              <tr>
+                <th> ID </th>
+                <th> Programa </th>
+                <th> Obra </th>
+                <th> Localidad </th>
+                <th> Empresa </th>
+                <th> ObN° </th>
+                <th> AntN° </th>
+                <th> DevN° </th>
+                <th> RedN° </th>
+                <th> Terr.N° </th>
+                <th> Recom.N° </th>
+                <th> Expediente </th>
+                <th> Fecha </th>
+                <th> Monto Pesos </th>
+                <th> Monto UVI </th>
+                <th> Acciones </th>
+              </tr>
+          </thead>
+      </table>
+  </div>
+</div>
+<!--
+  <tr>
+	<th data-data="id"> ID </th>
+	<th data-data="certificado_programa.programa_nombre" data-name="certificado_programa.programa_nombre"> Programa </th>
+	<th data-data="certificado_obra.obra_nombre" data-name="certificado_obra.obra_nombre"> Obra </th>
+  <th data-data="certificado_localidad.localidad_nombre" data-name="certificado_localidad.localidad_nombre"> Localidad </th>
+  <th data-data="certificado_empresa.empresa_nombre" data-name="certificado_empresa.empresa_nombre  "> Empresa </th>
+  <th data-data="certificado_rubro_obra"> ObN° </th>
+  <th data-data="certificado_rubro_anticipo"> AntN° </th>
+  <th data-data="certificado_rubro_devanticipo"> DevN° </th>
+  <th data-data="certificado_rubro_691"> RedN° </th>
+  <th data-data="certificado_rubro_terreno"> Terr.N° </th>
+  <th data-data="certificado_rubro_recomposicion"> Recom.N° </th>
+  <th data-data="certificado_expediente"> Expediente </th>
+  <th data-data="certificado_fecha"> Fecha </th>
+  <th data-data="certificado_monto_pesos"> Monto Pesos </th>
+  <th data-data="certificado_monto_uvi"> Monto UVI </th>
+	<th data-data=""> Acciones </th>
+  </tr>
+</thead>
+-->
+<!--
+<thead>
+  <tr>
+	<th> ID </th>
+	<th> Programa </th>
+	<th> Obra </th>
+  <th> Localidad </th>
+  <th> Empresa </th>
+  <th> ObN° </th>
+  <th> AntN° </th>
+  <th> DevN° </th>
+  <th> RedN° </th>
+  <th> Terr.N° </th>
+  <th> Recom.N° </th>
+  <th> Expediente </th>
+  <th> Fecha </th>
+  <th> Monto Pesos </th>
+  <th> Monto UVI </th>
+	<th> Acciones </th>
+</tr>
+</thead>
+</table>
+-->
+
+<script>
+$(document).ready( function() {
+  var TableCertificado = $('#lista-certificados').DataTable({
+    serverSide: true,
+    "language": {"url": 'https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json'},
+    "ajax": { "url": '/api/api/certificados/?format=datatables', "format": "GET", },
+    order: [[1, "asc"]],
+    "columns": [
+            {"data": "id", "searchable": false},
+            {"data": "certificado_programa.programa_nombre", "name": "certificado_programa.programa_nombre"},
+            {"data": "certificado_obra.obra_nombre", "name": "certificado_obra.obra_nombre"},
+            {"data": "certificado_localidad.localidad_nombre", "name": "certificado_localidad.localidad_nombre"},
+            {"data": "certificado_empresa.empresa_nombre", "name": "certificado_empresa.empresa_nombre"},
+            {"data": "certificado_rubro_obra"},
+            {"data": "certificado_rubro_anticipo"},
+            {"data": "certificado_rubro_devanticipo"},
+            {"data": "certificado_rubro_691"},
+            {"data": "certificado_rubro_terreno"},
+            {"data": "certificado_rubro_recomposicion"},
+            {"data": "certificado_expediente"},
+            {"data": "certificado_fecha"},
+            {"data": "certificado_monto_pesos"},
+            {"data": "certificado_monto_uvi"},
+            ]
+	//	columnDefs: [{"targets": 15, "data": "id", "render": function ( data, type, row, meta ) 
+	//	{ return '<p><a href="/polizas/crear/certificado/'+data+'">Editar</a></p>';} }],
+      });
+      
+yadcf.init(TableCertificado, [
+        {
+          column_number: 1,
+					filter_type: "select"
+        },
+        {
+          column_number: 2,
+					filter_type: "select"
+        },
+        {
+          column_number: 3,
+					filter_type: "select"
+        },
+        {
+          column_number: 4,
+					filter_type: "select"
+        },
+        ]);
+      });
+</script>
+
+{% endblock %}

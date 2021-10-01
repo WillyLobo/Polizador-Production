@@ -9,7 +9,7 @@
 {{ form.media.css }}
 
 <div class="container">
-<form action="{% url "carga:crear-obra" %}" method="POST"> 
+<form action="{% url "carga:update-obra" object.id %}" method="POST"> 
 
 {% csrf_token %}
 {{ form.errors }}
