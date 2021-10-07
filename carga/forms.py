@@ -30,6 +30,19 @@ class PolizaForm(forms.ModelForm):
 		widgets = {
 			"poliza_tomador" : EmpresaWidget
 		}
+		# certificado_programa
+		# certificado_obra
+		# certificado_localidad
+		# certificado_rubro_obra = forms.IntegerField()
+		# certificado_rubro_anticipo
+		# certificado_rubro_devanticipo
+		# certificado_rubro_691
+		# certificado_rubro_terreno
+		# certificado_rubro_recomposicion
+		# certificado_expediente
+		# certificado_fecha
+		# certificado_monto_pesos
+		# certificado_monto_uvi
 
 class EmpresaForm(forms.ModelForm):
 	class Meta:

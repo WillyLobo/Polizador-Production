@@ -72,6 +72,7 @@ class ObraAPI(serializers.ModelSerializer):
 	obra_empresa	= EmpresaAPI()
 	obra_localidad	= LocalidadAPI()
 	obra_programa	= ProgramaAPI()
+	obra_licitacion_tipo = serializers.CharField(source="get_obra_licitacion_tipo_display")
 	obra_inspector	= serializers.StringRelatedField(many=True)
 
 class PrototipoAPI(serializers.ModelSerializer):

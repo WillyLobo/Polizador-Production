@@ -111,11 +111,11 @@ class UpdateCertificado(LoginRequiredMixin, generic.UpdateView):
 	success_url = reverse_lazy("api:certificados")
 
 # Import/export plugin
-def export(request):
-	obra_resource = ObraResource()
-	dataset = obra_resource.export()
-	response = HttpResponse(dataset.csv, content_type="text/csv")
-	response["Content-Disposition"] = 'attachment; filename="obra.csv"'
-	return response
+# def export(request):
+# 	obra_resource = ObraResource()
+# 	dataset = obra_resource.export()
+# 	response = HttpResponse(dataset.csv, content_type="text/csv")
+# 	response["Content-Disposition"] = 'attachment; filename="obra.csv"'
+# 	return response
 		 
 

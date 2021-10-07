@@ -176,12 +176,7 @@ class Obra(models.Model):
     obra_contrato_nacion_uvi_fecha = models.DateField("Fecha UVI Nación: ", blank=True, null=True)
     obra_contrato_provincia_pesos = models.DecimalField("Monto Provincia en Pesos: ", max_digits=12 ,decimal_places=2, validators=[MinValueValidator(0)], blank=True, null=True)
     obra_contrato_provincia_uvi  = models.DecimalField("Monto Provincia en UVI: ", max_digits=12 ,decimal_places=2, validators=[MinValueValidator(0)], blank=True, null=True)
-    obra_contrato_provincia_uvi_fecha = models.DateField("Fecha UVI Provicia: ", blank=True, null=True)# obra_nomenclatura_secc
-    # obra_nomenclatura_ch
-    # obra_nomenclatura_qta
-    # obra_nomenclatura_fr
-    # obra_nomenclatura_mz
-    # obra_nomenclatura_pc
+    obra_contrato_provincia_uvi_fecha = models.DateField("Fecha UVI Provicia: ", blank=True, null=True)
         
     def __str__(self):
         return f"{self.obra_nombre} - {self.obra_localidad}"
@@ -252,12 +247,12 @@ class Certificado(models.Model):
     certificado_obra                = models.ForeignKey("Obra", on_delete=models.CASCADE)
     certificado_localidad           = models.ForeignKey("Localidad", on_delete=models.CASCADE)
     certificado_empresa             = models.ForeignKey("Empresa", on_delete=models.CASCADE)
-    certificado_rubro_obra          = models.DecimalField("Certificado de Obra N°", max_digits=3, decimal_places=0, null=True, blank=True)
-    certificado_rubro_anticipo      = models.DecimalField("Certificado de Anticipo N°", max_digits=3, decimal_places=0, null=True, blank=True)
-    certificado_rubro_devanticipo   = models.DecimalField("Certificado de Devolución de Anticipo N°", max_digits=3, decimal_places=0, null=True, blank=True)
-    certificado_rubro_691           = models.DecimalField("Certificado de Redeterminación Decreto N°691/16 N°", max_digits=3, decimal_places=0, null=True, blank=True)
-    certificado_rubro_terreno       = models.DecimalField("Certificado de Terreno | Cuota N°", max_digits=3, decimal_places=0, null=True, blank=True)
-    certificado_rubro_recomposicion = models.DecimalField("Certificado de Recomposición Período Anterior N°", max_digits=3, decimal_places=0, null=True, blank=True)
+    certificado_rubro_obra          = models.DecimalField("Obra N°", max_digits=3, decimal_places=0, null=True, blank=True)
+    certificado_rubro_anticipo      = models.DecimalField("Anticipo N°", max_digits=3, decimal_places=0, null=True, blank=True)
+    certificado_rubro_devanticipo   = models.DecimalField("Devolución de Anticipo N°", max_digits=3, decimal_places=0, null=True, blank=True)
+    certificado_rubro_691           = models.DecimalField("Decreto N°691/16 N°", max_digits=3, decimal_places=0, null=True, blank=True)
+    certificado_rubro_terreno       = models.DecimalField("Terreno | Cuota N°", max_digits=3, decimal_places=0, null=True, blank=True)
+    certificado_rubro_recomposicion = models.DecimalField("Recomposición N°", max_digits=3, decimal_places=0, null=True, blank=True)
     certificado_expediente          = models.CharField("Número de Expediente", max_length=17)
     certificado_fecha               = models.DateField("Fecha de Salida")
     certificado_monto_pesos         = models.DecimalField("Monto en Pesos", max_digits=12, decimal_places=2, null=True, blank=True, validators=[MinValueValidator(0)])

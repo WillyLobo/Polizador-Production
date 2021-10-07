@@ -20,6 +20,7 @@
 
 1. [ ] Create models
     - [x] "Certificados"
+        - [ ] Add progress percentiles
     - [x] "Obra"
     - [x] "Programa"
     - [x] "Empresa"
@@ -28,11 +29,11 @@
     - [x] "Agentes"
     - [x] "Prototipos"
 3. [ ] Create views for "Certificados"
-    - [ ] Certificados API endpoint
+    - [x] Certificados API endpoint
     - [x] ListView
-    - [ ] CreateView
-    - [ ] UpdateView
-    - [ ] Datatables View
+    - [x] CreateView
+    - [x] UpdateView
+    - [x] Datatables View
 4. [x] Add Admin Import/Export functions for the models.
 5. [ ] -
 6. [ ] Create "Prototipos" model/views
