@@ -1,112 +1,43 @@
-<script type="text/javascript">
-	window.addEventListener("resize", function() {
-		"use strict"; window.location.reload(); 
-	});
-
-	document.addEventListener("DOMContentLoaded", function(){
-        
-		// make it as accordion for smaller screens
-		if (window.innerWidth < 992) {
-
-			// close all inner dropdowns when parent is closed
-			document.querySelectorAll('.navbar .dropdown').forEach(function(everydropdown){
-				everydropdown.addEventListener('hidden.bs.dropdown', function () {
-					// after dropdown is hidden, then find all submenus
-					  this.querySelectorAll('.submenu').forEach(function(everysubmenu){
-					  	// hide every submenu as well
-					  	everysubmenu.style.display = 'none';
-					  });
-				})
-			});
-			
-			document.querySelectorAll('.dropdown-menu a').forEach(function(element){
-				element.addEventListener('click', function (e) {
-		
-				  	let nextEl = this.nextElementSibling;
-				  	if(nextEl && nextEl.classList.contains('submenu')) {	
-				  		// prevent opening link if link needs to open dropdown
-				  		e.preventDefault();
-
-				  		if(nextEl.style.display == 'block'){
-				  			nextEl.style.display = 'none';
-				  		} else {
-				  			nextEl.style.display = 'block';
-				  		}
-
-				  	}
-				});
-			})
-		}
-		// end if innerWidth
-
-	}); 
-	// DOMContentLoaded  end
-</script>
-
-<!-- ============= COMPONENT ============== -->
-
-<nav class="navbar navbar-expand-lg navbar-light d-print-none" style="background-color: #f2f2f2;">
- <div class="container-fluid">
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"  aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  <div class="collapse navbar-collapse" id="main_nav">
-	
-
-	<ul class="navbar-nav">
-		<li class="nav-item active"> <a class="nav-link" href="{% url "api:polizas" %}">Home </a> </li>
-		<li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">  Listados  </a>
-		    <ul class="dropdown-menu">
-			  <li><a class="dropdown-item" href="{% url "api:polizas" %}"> Listar Pólizas </a></li>
-			  <li><a class="dropdown-item" href="{% url "api:empresas" %}"> Listar Empresas </a></li>
-			  <li><a class="dropdown-item" href="{% url "api:obras" %}"> Listas Obras </a></li>
-			  <li><a class="dropdown-item" href="{% url "api:certificados" %}"> Lista Certificados </a> </li>
-		    </ul>
-		</li>
-		<li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">  Crear Nuevo  </a>
-		    <ul class="dropdown-menu">
-				<li><a class="dropdown-item" href="{% url "carga:crear-poliza" %}"> Crear Póliza </a></li>
-				<li><a class="dropdown-item" href="{% url "carga:crear-empresa" %}"> Crear Empresa </a></li>
-				<li><a class="dropdown-item" href="{% url "carga:crear-obra" %}"> Crear Obra </a></li>
-				<li><a class="dropdown-item" href="{% url "carga:crear-certificado" %}"> Crear Certificado </a></li>
-		    </ul>
-		</li>
-		</ul>
-
-	<ul class="navbar-nav ms-auto">
-				
-		{% if request.user.is_authenticated %}
-		<li class="nav-item dropdown">
-			<a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown"> {{ request.user.first_name }} {{request.user.last_name }} </a>
-		    <ul class="dropdown-menu dropdown-menu-right">
-			  <li><a class="dropdown-item" href="{% url "logout" %}"> Salir </a></li>
-			</ul>
-		</li>
-		{% else %}
-		<li class="nav-item"><a class="nav-link" href="{% url "login" %}"> Ingresar </a></li>
-		{% endif %}
-
-	
-<!--		<li class="nav-item dropdown">
-			<a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown"> Dropdown right </a>
-		    <ul class="dropdown-menu dropdown-menu-right">
-			  <li><a class="dropdown-item" href="#"> Dropdown item 1</a></li>
-			  <li><a class="dropdown-item" href="#"> Dropdown item 2 </a></li>
-			  <li><a class="dropdown-item" href="#"> Dropdown item 3 &raquo; </a>
-			  	 <ul class="submenu submenu-left dropdown-menu">
-				    <li><a class="dropdown-item" href="">Submenu item 1</a></li>
-				    <li><a class="dropdown-item" href="">Submenu item 2</a></li>
-				    <li><a class="dropdown-item" href="">Submenu item 3</a></li>
-				    <li><a class="dropdown-item" href="">Submenu item 4</a></li>
-				 </ul>
+<!-- Barra de naufragación -->
+<nav class="navbar navbar-expand-lg navbar-light d-print-none">
+	<div class="container-fluid">
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="mainnavbar">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+  
+		<div class="collapse navbar-collapse justify-content-md-center" id="mainnavbar">
+		  <ul class="navbar-nav">
+			<li class="nav-item dropdown">
+				<a class="nav-link active dropdown-toggle" href="#" id="dropdown-listas" data-bs-toggle="dropdown" aria-expanded="false">Listados</a>
+				<ul class="dropdown-menu" aria-labelledby="dropdown-listas">
+				  <li><a class="dropdown-item" href="{% url "api:polizas" %}">Listar Pólizas</a></li>
+				  <li><a class="dropdown-item" href="{% url "api:empresas" %}">Listar Empresas</a></li>
+				  <li><a class="dropdown-item" href="{% url "api:obras" %}">Listar Obras</a></li>
+				  <li><a class="dropdown-item" href="{% url "api:certificados" %}">Listar Certificados</a></li>
+				</ul>
 			  </li>
-			  <li><a class="dropdown-item" href="#"> Dropdown item 4 </a></li>
-		    </ul>
-		</li> -->
-	</ul>
-
-  </div> <!-- navbar-collapse.// -->
- </div> <!-- container-fluid.// -->
+			  <li class="nav-item">
+			  <a class="nav-link active" aria-current="page" href="{% url "carga:crear-poliza" %}">Cargar Póliza</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link active" aria-current="page" href="{% url "carga:crear-empresa" %}">Cargar Empresa</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link active" aria-current="page" href="{% url "carga:crear-obra" %}">Cargar Obra</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link active" aria-current="page" href="{% url "carga:crear-certificado" %}">Cargar Certificado</a>
+			</li>
+			{% if request.user.is_authenticated %}
+			<li class="nav-item dropdown">
+				<a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown"> {{ request.user.first_name }} {{request.user.last_name }} </a>
+				<ul class="dropdown-menu">
+				  <li><a class="dropdown-item" href="{% url "logout" %}"> Salir </a></li>
+				</ul>
+			</li>
+			{% else %}
+			<li class="nav-item"><a class="nav-link" href="{% url "login" %}"> Ingresar </a></li>
+			{% endif %}
+		  </ul>
+	  </div>
 </nav>
