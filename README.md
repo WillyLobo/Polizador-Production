@@ -5,6 +5,7 @@
 
 1. [ ] Add Recover & Change password functions/templates.
     - [ ] Setup Gmail Account for the app.
+    - [ ] Redo login screen to match "color palette".
     - Create Templates:
         - [ ] Register
         - [ ] Recover Password
@@ -13,6 +14,7 @@
 3. [x] Make UniqueContraint for polizas.
 4. [X] Add validation to input/update form.
 5. [x] Setup scheduled Database backups to the cloud.
+
 
 # Certificador #
 
@@ -55,4 +57,5 @@
 
 - [x] Localization in Datatables Numbers
 - [x] Localization in Datatables Dates
-- [ ] Data columns
+- [x] Data columns
+- [x] Increase max_char in nomenclatura_catastral
