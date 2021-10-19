@@ -74,6 +74,14 @@ class ObraAPI(serializers.ModelSerializer):
 	obra_programa	= ProgramaAPI()
 	obra_licitacion_tipo = serializers.CharField(source="get_obra_licitacion_tipo_display")
 	obra_inspector	= serializers.StringRelatedField(many=True)
+	obra_fecha_entrega = serializers.DateField(format="%d-%m-%Y", input_formats=None)
+	obra_fecha_contrato = serializers.DateField(format="%d-%m-%Y", input_formats=None)
+	obra_contrato_nacion_pesos = serializers.DecimalField(max_digits=12, decimal_places=2, localize=True)
+	obra_contrato_nacion_uvi = serializers.DecimalField(max_digits=12, decimal_places=2, localize=True)
+	obra_contrato_nacion_uvi_fecha = serializers.DateField(format="%d-%m-%Y", input_formats=None)
+	obra_contrato_provincia_pesos = serializers.DecimalField(max_digits=12, decimal_places=2, localize=True)
+	obra_contrato_provincia_uvi = serializers.DecimalField(max_digits=12, decimal_places=2, localize=True)
+	obra_contrato_provincia_uvi_fecha = serializers.DateField(format="%d-%m-%Y", input_formats=None)
 
 class PrototipoAPI(serializers.ModelSerializer):
 	class Meta:
@@ -92,5 +100,6 @@ class CertificadoAPI(serializers.ModelSerializer):
 	certificado_obra		= ObraAPI()
 	certificado_localidad	= LocalidadAPI()
 	certificado_empresa		= EmpresaAPI()
+	certificado_fecha		= serializers.DateField(format="%d-%m-%Y", input_formats=None)
 	certificado_monto_pesos = serializers.DecimalField(max_digits=12, decimal_places=2, localize=True) 
 	certificado_monto_uvi	= serializers.DecimalField(max_digits=12, decimal_places=2, localize=True)
