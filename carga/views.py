@@ -88,7 +88,7 @@ class UpdateObra(LoginRequiredMixin, generic.UpdateView):
 	redirect_field_name = "login"
 
 	model = models.Obra
-	template_name = "crear-obra.html"
+	template_name = "update-obra.html"
 	form_class = forms.ObraForm
 	success_url = reverse_lazy("api:obras")
 

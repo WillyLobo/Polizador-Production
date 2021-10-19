@@ -3,6 +3,7 @@ SECRET.*
 DBSECRET.*
 manage.py
 settings-local.py
+0012_merge_0003_auto_20210901_1105_0011_auto_20211009_1203.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
