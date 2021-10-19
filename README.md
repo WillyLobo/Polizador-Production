@@ -55,3 +55,4 @@
 
 - [x] Localization in Datatables Numbers
 - [x] Localization in Datatables Dates
+- [ ] Data columns
