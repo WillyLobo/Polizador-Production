@@ -138,6 +138,9 @@ USE_THOUSAND_SEPARATOR = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / "static"
+STATIC_FILES_DIRS = [
+    BASE_DIR / "polizador/static_files",
+]
 
 
 # Default primary key field type
@@ -179,3 +182,4 @@ CACHES = {
 # Tell select2 which cache configuration to use:
 SELECT2_CACHE_BACKEND = "select2"
 LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = "/api/polizas"

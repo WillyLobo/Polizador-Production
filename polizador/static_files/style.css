@@ -49,3 +49,30 @@
 .navbar-expand-lg .dropdown-menu {
     background-color: #f2f2f2;
 }
+.btn{
+	transition: all .5s ease;
+	width: 30%;
+	border-radius: 30px;
+	color:black !important;
+	font-weight: 600;
+	background-color: lightgray !important;
+	border: 1px solid black !important;
+	margin-top: 1.5em;
+	margin-bottom: 1em;
+}
+.btn:hover, .btn:focus{
+	background-color: black !important;
+	color:#fff !important;
+}
+.dataTables_filter {
+    float: left !important;
+}
+ .dataTables_info {
+   float: right !important;
+}
+ .dataTables_wrapper {
+   font-family: Verdana, Geneva, sans-serif; 
+   font-size: 12px; 
+   font-style: normal; 
+   font-variant: normal;
+}

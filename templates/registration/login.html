@@ -1,16 +1,6 @@
 <!doctype html>
 <html lang="es">
   <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0LL0WQVXCE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0LL0WQVXCE');
-</script>
-
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -102,9 +92,6 @@ form{
 	<!-- Main Content -->
 {% block content %}
 
-{% if request.user.is_authenticated %}
-    <meta http-equiv="REFRESH" content="0;url={% url "api:polizas" %}">
-{% endif %}
 {% load static %}
 	<div class="container-fluid">
 		<div class="row main-content bg-success text-center">
