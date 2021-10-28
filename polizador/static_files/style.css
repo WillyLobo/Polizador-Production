@@ -76,3 +76,14 @@
    font-style: normal; 
    font-variant: normal;
 }
+.page-item.disabled .page-link {
+    color: gray !important;
+}
+.page-item.active .page-link {
+    color: black !important;
+    background: lightgray !important;
+    border-color: black !important;
+}
+.page-item .page-link {
+    color: black !important;
+}

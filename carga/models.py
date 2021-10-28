@@ -45,7 +45,7 @@ class Empresa(models.Model):
     empresa_titular_nombre  = models.CharField("Titular de la Empresa", max_length=140, blank=True, null=True)
     empresa_titular_dni     = models.DecimalField("DNI:", max_digits=9, decimal_places=0, blank=True, null=True)
     empresa_direccion       = models.CharField("Dirección de la Empresa", max_length=255, blank=True, null=True)
-    empresa_inscripcion     = models.CharField("Inscripción:", max_length=200, blank=True, null=True)
+    empresa_inscripcion     = models.CharField("Inscripción:", max_length=500, blank=True, null=True)
     empresa_correo_p        = models.EmailField("Dirección de Correo Primaria:", blank=True, null=True)
     empresa_correo_s        = models.EmailField("Dirección de Correo Alternativa:", blank=True, null=True)
 
@@ -164,7 +164,7 @@ class Obra(models.Model):
     obra_licitacion_tipo    = models.CharField("Compulsa", max_length=1, choices=COMPULSA, blank=True, null=True)
     obra_licitacion_numero  = models.DecimalField("Número de Licitación", max_digits=3, decimal_places=0, blank=True, null=True)
     obra_licitacion_ano     = models.DecimalField("Año de Licitación", max_digits=4, decimal_places=0, blank=True, null=True)
-    obra_nomenclatura       = models.CharField("Nomenclatura Catastral", max_length=255, blank=True, null=True)  
+    obra_nomenclatura       = models.CharField("Nomenclatura Catastral", max_length=500, blank=True, null=True)  
     obra_nomenclatura_plano = models.CharField("Número de Plano", max_length=10, blank=True, null=True)
     obra_fecha_entrega      = models.DateField("Fecha de Entrega de la Obra", blank=True, null=True)
     obra_fecha_contrato     = models.DateField("Fecha de Firma de Contrato", blank=True, null=True)
