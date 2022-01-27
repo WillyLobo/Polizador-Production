@@ -87,3 +87,6 @@
 .page-item .page-link {
     color: black !important;
 }
+.required:before { 
+    content: '*'; 
+}
