@@ -96,10 +96,7 @@ class CertificadoAPI(serializers.ModelSerializer):
 		model = models.Certificado
 		fields = "__all__"
 	
-	certificado_programa	= ProgramaAPI()
 	certificado_obra		= ObraAPI()
-	certificado_localidad	= LocalidadAPI()
-	certificado_empresa		= EmpresaAPI()
-	certificado_fecha		= serializers.DateField(format="%d-%m-%Y", input_formats=None)
 	certificado_monto_pesos = serializers.DecimalField(max_digits=12, decimal_places=2, localize=True) 
 	certificado_monto_uvi	= serializers.DecimalField(max_digits=12, decimal_places=2, localize=True)
+	certificado_monto_cobrar = serializers.DecimalField(max_digits=12, decimal_places=2, localize=True)

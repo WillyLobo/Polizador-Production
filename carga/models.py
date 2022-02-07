@@ -147,6 +147,7 @@ class Obra(models.Model):
     )
     
     class Meta:
+        # constraints = [models.UniqueConstraint(fields=["obra_nombre", "obra_empresa", "obra_convenio","obra_programa"], name="obra-constraint")]
         verbose_name = "Obra"
         verbose_name_plural = "Obras"
     
@@ -179,7 +180,7 @@ class Obra(models.Model):
     obra_contrato_provincia_uvi_fecha = models.DateField("Fecha UVI Provicia: ", blank=True, null=True)
         
     def __str__(self):
-        return f"{self.obra_nombre} - {self.obra_localidad}"
+        return f"({self.obra_convenio}) {self.obra_nombre} - {self.obra_localidad} - {self.obra_empresa}"
 
 class Prototipo(models.Model):
     TIPO = (
@@ -243,17 +244,23 @@ class Certificado(models.Model):
         verbose_name = "Certificado"
         verbose_name_plural = "Certificados"
 
-    certificado_programa            = models.ForeignKey("Programa", on_delete=models.CASCADE)
     certificado_obra                = models.ForeignKey("Obra", on_delete=models.CASCADE)
-    certificado_localidad           = models.ForeignKey("Localidad", on_delete=models.CASCADE)
-    certificado_empresa             = models.ForeignKey("Empresa", on_delete=models.CASCADE)
-    certificado_rubro_obra          = models.DecimalField("Obra N°", max_digits=3, decimal_places=0, null=True, blank=True, validators=[MinValueValidator(0)])
     certificado_rubro_anticipo      = models.DecimalField("Anticipo N°", max_digits=3, decimal_places=0, null=True, blank=True, validators=[MinValueValidator(0)])
+    certificado_rubro_obra          = models.DecimalField("Obra N°", max_digits=3, decimal_places=0, null=True, blank=True, validators=[MinValueValidator(0)])
     certificado_rubro_devanticipo   = models.DecimalField("Devolución de Anticipo N°", max_digits=3, decimal_places=0, null=True, blank=True, validators=[MinValueValidator(0)])
-    certificado_rubro_691           = models.DecimalField("Decreto N°691/16 N°", max_digits=3, decimal_places=0, null=True, blank=True, validators=[MinValueValidator(0)])
-    certificado_rubro_terreno       = models.DecimalField("Terreno | Cuota N°", max_digits=3, decimal_places=0, null=True, blank=True, validators=[MinValueValidator(0)])
-    certificado_rubro_recomposicion = models.DecimalField("Recomposición N°", max_digits=3, decimal_places=0, null=True, blank=True, validators=[MinValueValidator(0)])
     certificado_expediente          = models.CharField("Número de Expediente", max_length=17)
-    certificado_fecha               = models.DateField("Fecha de Salida")
-    certificado_monto_pesos         = models.DecimalField("Monto en Pesos", max_digits=12, decimal_places=2, null=True, blank=True)
+    certificado_periodo             = models.CharField("Periodo", max_length=13)
+    certificado_monto_pesos         = models.DecimalField("Monto en Pesos", max_digits=12, decimal_places=2, default=0, null=True, blank=True)
+    certificado_mes_pct             = models.DecimalField("Mes %", max_digits=4, decimal_places=2, default=0)
+    certificado_ante_pct            = models.DecimalField("Anterior %", max_digits=4, decimal_places=2, default=0)
+    certificado_acum_pct            = models.DecimalField("Acumulado %", max_digits=4, decimal_places=2, default=0)
+    certificado_devolucion_expte    = models.CharField("Número de Expediente Devolución", max_length=17, null=True, blank=True)
+    certificado_devolucion_monto    = models.DecimalField("Monto Devolución en Pesos", max_digits=12, decimal_places=2, default=0, null=True, blank=True)
     certificado_monto_uvi           = models.DecimalField("Monto en UVI", max_digits=12, decimal_places=2, null=True, blank=True)
+    # certificado_fecha               = models.DateField("Fecha de Salida", null=True, blank=True)
+    # certificado_monto_cobrar    (certificado_monto_pesos + certificado_devolucion_monto)
+    certificado_monto_cobrar        = models.DecimalField("Monto a Cobrar", max_digits=12, decimal_places=2, default=0, editable=False)
+
+    def save(self):
+        self.certificado_monto_cobrar = self.certificado_monto_pesos + self.certificado_devolucion_monto
+        return super(Certificado, self).save()

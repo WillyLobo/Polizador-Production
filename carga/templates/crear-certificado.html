@@ -13,23 +13,20 @@
 
 {% csrf_token %}
 {{ form.errors }}
-    <div class="row mx-md-n5"> {{form.certificado_programa.label}} {{ form.certificado_programa }} </div>
     <div class="row mx-md-n5"> {{form.certificado_obra.label}} {{ form.certificado_obra }} </div>
-    <div class="row mx-md-n5"> {{form.certificado_localidad.label}} {{ form.certificado_localidad }} </div>
-    <div class="row mx-md-n5"> {{form.certificado_empresa.label}} {{ form.certificado_empresa }} </div>
       <div class="row row-cols-3">
-    <div class="col-auto"> <small>{{form.certificado_rubro_obra.label}}</small> {{ form.certificado_rubro_obra }} </div>
-    <div class="col-auto"> <small>{{form.certificado_rubro_anticipo.label}}</small> {{ form.certificado_rubro_anticipo }} </div>
-    <div class="col-auto"> <small>{{form.certificado_rubro_devanticipo.label}}</small> {{ form.certificado_rubro_devanticipo }} </div>
-      </div>
-      <div class="row row-cols-3">
-    <div class="col-auto"> <small>{{form.certificado_rubro_691.label}}</small> {{ form.certificado_rubro_691 }} </div>    
-    <div class="col-auto"> <small>{{form.certificado_rubro_terreno.label}}</small>{{ form.certificado_rubro_terreno }} </div>
-    <div class="col-auto"> <small>{{form.certificado_rubro_recomposicion.label}}</small> {{ form.certificado_rubro_recomposicion }} </div>
+        <div class="col-auto"> <small>{{form.certificado_rubro_anticipo.label}}</small> {{ form.certificado_rubro_anticipo }} </div>
+        <div class="col-auto"> <small>{{form.certificado_rubro_obra.label}}</small> {{ form.certificado_rubro_obra }} </div>
+        <div class="col-auto"> <small>{{form.certificado_rubro_devanticipo.label}}</small> {{ form.certificado_rubro_devanticipo }} </div>
       </div>
     <div class="row mx-md-n5"> {{form.certificado_expediente.label}} {{ form.certificado_expediente }} </div>
-    <div class="row mx-md-n5"> {{form.certificado_fecha.label}} {{ form.certificado_fecha }} </div>
+    <div class="row mx-md-n5"> {{form.certificado_periodo.label}} {{ form.certificado_periodo }} </div>
     <div class="row mx-md-n5"> {{form.certificado_monto_pesos.label}} {{ form.certificado_monto_pesos }} </div>
+    <div class="row mx-md-n5"> {{form.certificado_mes_pct.label}} {{ form.certificado_mes_pct }} </div>
+    <div class="row mx-md-n5"> {{form.certificado_ante_pct.label}} {{ form.certificado_ante_pct }} </div>
+    <div class="row mx-md-n5"> {{form.certificado_acum_pct.label}} {{ form.certificado_acum_pct }} </div>
+    <div class="row mx-md-n5"> {{form.certificado_devolucion_expediente.label}} {{ form.certificado_devolucion_expediente }} </div>
+    <div class="row mx-md-n5"> {{form.certificado_devolucion_monto.label}} {{ form.certificado_devolucion_monto }} </div>
     <div class="row mx-md-n5"> {{form.certificado_monto_uvi.label}} {{ form.certificado_monto_uvi }} </div>
     <input type='submit' value='Guardar' class="btn" />
 </form>

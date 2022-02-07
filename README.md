@@ -18,7 +18,7 @@
 # Monthly Certification View
 
 1. [ ] Create Model
-    - [ ] Fields: Programa, ACU, Numero_de-orden, empresa, cant_viv, denominacion, localidad, n_expte, n_ant, n_cert, n_dev_ant, periodo, mes_pesos, mes_%, ante_%, acum_%, n_expte_devolucion, devolucion, monto_cobrar, uvis
+    - [ ] Fields: *Programa, *ACU, *Numero_de-orden, *empresa, *cant_viv, *denominacion, *localidad, *n_expte, n_ant, n_cert, n_dev_ant, periodo, mes_pesos, mes_%, ante_%, acum_%, n_expte_devolucion, devolucion, monto_cobrar, uvis
 # Certificador #
 
 # TODO List: #

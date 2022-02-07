@@ -7,30 +7,30 @@
         <tr>
           <th> Acciones </th>
           <th> Nombre </th>
-          <th> Cantidad de Soluciones </th>
+          <th> Soluciones </th>
           <th> Empresa </th>
           <th> Localidad </th>
           <th> Grupo </th>
-          <th> Plazo de Ejecución </th>
+          <th> Plazo </th>
           <th> Programa </th>
-          <th> Convenio/ACU </th>
+          <th> Convenio </th>
           <th> Expediente </th>
           <th> Resolución </th>
-          <th> Compulsa Tipo </th>
-          <th> Compulsa Número</th>
-          <th> Compulsa Año </th>
+          <th> Lic. Tipo </th>
+          <th> Lic. Número</th>
+          <th> Lic. Año </th>
+          <th> Monto Nacion Pesos </th>
+          <th> Monto Nacion UVI </th>
+          <th> Fecha UVI Nacion</th>
+          <th> Monto Prov. Pesos </th>
+          <th> Monto Prov. UVI </th>
+          <th> Fecha UVI Prov.</th>
           <th> Nomenclatura </th>
           <th> N° Plano </th>
-          <th> Fecha de Firma de Contrato </th>
-          <th> Fecha de Entrega de la Obra</th>
-          <th> Número de Expediente de Costos </th>
-          <th> Inspectores </th>
-          <th> Contrato Nacion Pesos </th>
-          <th> Contrato Nacion UVI </th>
-          <th> Contrato Nacion UVI Fecha</th>
-          <th> Contrato Provincia Pesos </th>
-          <th> Contrato Provincia UVI </th>
-          <th> Contrato Provincia UVI Fecha</th>
+          <th> Fecha Entrega</th>
+          <th> Expte de Costos </th>
+          <th> Inspector </th>
+          <th> Fecha de Contrato </th>
           <th> Observaciones </th>
         </tr>
       </thead>
@@ -38,30 +38,30 @@
         <tr>
           <th> Acciones </th>
           <th> Nombre </th>
-          <th> Cantidad de Soluciones </th>
+          <th> Soluciones </th>
           <th> Empresa </th>
           <th> Localidad </th>
           <th> Grupo </th>
-          <th> Plazo de Ejecución </th>
+          <th> Plazo </th>
           <th> Programa </th>
-          <th> Convenio/ACU </th>
+          <th> Convenio </th>
           <th> Expediente </th>
           <th> Resolución </th>
-          <th> Compulsa Tipo </th>
-          <th> Compulsa Número</th>
-          <th> Compulsa Año </th>
+          <th> Lic. Tipo </th>
+          <th> Lic. Número</th>
+          <th> Lic. Año </th>
+          <th> Monto Nacion Pesos </th>
+          <th> Monto Nacion UVI </th>
+          <th> Fecha UVI Nacion</th>
+          <th> Monto Prov. Pesos </th>
+          <th> Monto Prov. UVI </th>
+          <th> Fecha UVI Prov.</th>
           <th> Nomenclatura </th>
           <th> N° Plano </th>
-          <th> Fecha de Firma de Contrato </th>
-          <th> Fecha de Entrega de la Obra</th>
-          <th> Número de Expediente de Costos </th>
-          <th> Inspectores </th>
-          <th> Contrato Nacion Pesos </th>
-          <th> Contrato Nacion UVI </th>
-          <th> Contrato Nacion UVI Fecha</th>
-          <th> Contrato Provincia Pesos </th>
-          <th> Contrato Provincia UVI </th>
-          <th> Contrato Provincia UVI Fecha </th>
+          <th> Fecha Entrega</th>
+          <th> Expte de Costos </th>
+          <th> Inspector </th>
+          <th> Fecha de Contrato </th>
           <th> Observaciones </th>
         </tr>
       </tfoot>
@@ -82,6 +82,9 @@
       "ajax": {"url": "/api/api/obras/?format=datatables"},
       columnDefs: [
       {
+        "className": "dt-center", "targets": "_all" 
+      },
+      {
         "targets": 0, 
         "data": "id", 
         "render": function ( data, type, row, meta ) 
@@ -95,42 +98,37 @@
       }
       ],
       columns: [
-        {"data":"id", searchable: false},
+        {"data":"id", orderable: false, searchable: false},
         {"data":"obra_nombre"},
         {"data":"obra_soluciones"},
         {"data":"obra_empresa.empresa_nombre", "name":"obra_empresa.empresa_nombre"},
         {"data":"obra_localidad.localidad_nombre", "name":"obra_localidad.localidad_nombre"},
-        {"data":"obra_grupo"},
-        {"data":"obra_plazo"},
+        {"data":"obra_grupo", orderable: false, searchable: false},
+        {"data":"obra_plazo", orderable: false, searchable: false},
         {"data":"obra_programa.programa_nombre", "name":"obra_programa.programa_nombre"},
-        {"data":"obra_convenio"},
-        {"data":"obra_expediente"},
-        {"data":"obra_resolucion"},
-        {"data":"obra_licitacion_tipo"},
-        {"data":"obra_licitacion_numero"},
-        {"data":"obra_licitacion_ano"},
-        {"data":"obra_nomenclatura"},
-        {"data":"obra_nomenclatura_plano"},
-        {"data":"obra_fecha_contrato"},
-        {"data":"obra_fecha_entrega"},
-        {"data":"obra_expediente_costo"},
-        {"data":"obra_inspector", "name":"obra_inspector"},
+        {"data":"obra_convenio", orderable: false},
+        {"data":"obra_expediente", orderable: false},
+        {"data":"obra_resolucion", orderable: false},
+        {"data":"obra_licitacion_tipo", orderable: false},
+        {"data":"obra_licitacion_numero", orderable: false},
+        {"data":"obra_licitacion_ano", orderable: false},
         {"data":"obra_contrato_nacion_pesos"},
         {"data":"obra_contrato_nacion_uvi"},
-        {"data":"obra_contrato_nacion_uvi_fecha"},
+        {"data":"obra_contrato_nacion_uvi_fecha", orderable: false, searchable: false},
         {"data":"obra_contrato_provincia_pesos"},
         {"data":"obra_contrato_provincia_uvi"},
-        {"data":"obra_contrato_provincia_uvi_fecha"},
-        {"data":"obra_observaciones"},
+        {"data":"obra_contrato_provincia_uvi_fecha", orderable: false, searchable: false},
+        {"data":"obra_nomenclatura", orderable: false},
+        {"data":"obra_nomenclatura_plano", orderable: false},
+        {"data":"obra_fecha_entrega"},
+        {"data":"obra_expediente_costo", orderable: false},
+        {"data":"obra_inspector", "name":"obra_inspector", searchable: false},
+        {"data":"obra_fecha_contrato"},
+        {"data":"obra_observaciones", orderable: false},
       ],
       });
       // 24
       yadcf.init(TableObra, [
-          {
-            column_number: 1,
-            filter_type: "select",
-            filter_default_label: "Filtrar",
-          },
           {
             column_number: 2,
             filter_type: "select",
@@ -151,59 +149,6 @@
             filter_type: "select",
             filter_default_label: "Filtrar"
           },
-          {
-            column_number: 8,
-            filter_type: "select",
-            filter_default_label: "Filtrar"
-          },
-          {
-            column_number: 9,
-            filter_type: "select",
-            filter_default_label: "Filtrar"
-          },
-          {
-            column_number: 10,
-            filter_type: "select",
-            filter_default_label: "Filtrar"
-          },
-          {
-          // YADCF doesnt seem to support "get_display" objects filtering. Leaving the code for the "Compulsa Tipo"
-          // column as placeholder until i find a solution for the problem.
-            column_number: 11,
-            filter_type: "select",
-            filter_default_label: "Filtar"
-          },
-          {
-            column_number: 12,
-            filter_type: "select",
-            filter_default_label: "Filtrar"
-          },
-          {
-            column_number: 13,
-            filter_type: "select",
-            filter_default_label: "Filtrar"
-          },
-          {
-            column_number: 16,
-            filter_type: "select",
-            filter_default_label: "Filtrar"
-          },
-          {
-            column_number: 17,
-            filter_type: "select",
-            filter_default_label: "Filtrar"
-          },
-          {
-            column_number: 18,
-            filter_type: "select",
-            filter_default_label: "Filtrar",
-          },
-          {
-            column_number: 19,
-            filter_type: "select",
-            filter_default_label: "Filtrar",
-          },
-
           ],
           "footer",
           );

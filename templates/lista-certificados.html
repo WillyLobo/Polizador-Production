@@ -7,18 +7,22 @@
               <tr>
                 <th> ID </th>
                 <th> Programa </th>
-                <th> Obra </th>
-                <th> Localidad </th>
+                <th> Convenio </th>
                 <th> Empresa </th>
-                <th> ObN° </th>
-                <th> AntN° </th>
-                <th> DevN° </th>
-                <th> RedN° </th>
-                <th> Terr.N° </th>
-                <th> Recom.N° </th>
+                <th> Soluciones </th>
+                <th> Obra </th>
                 <th> Expediente </th>
-                <th> Fecha </th>
+                <th> AntN° </th>
+                <th> ObN° </th>
+                <th> DevN° </th>
+                <th> Periodo </th>
                 <th> Monto Pesos </th>
+                <th> Mes % </th>
+                <th> Anterior % </th>
+                <th> Acumulado % </th>
+                <th> Expediente Devolucion </th>
+                <th> Monto Devolucion </th>
+                <th> Monto a Cobrar </th>
                 <th> Monto UVI </th>
                 <th> Acciones </th>
               </tr>
@@ -26,21 +30,25 @@
           <tfoot>
             <tr>
               <th> ID </th>
-              <th> Programa </th>
-              <th> Obra </th>
-              <th> Localidad </th>
-              <th> Empresa </th>
-              <th> ObN° </th>
-              <th> AntN° </th>
-              <th> DevN° </th>
-              <th> RedN° </th>
-              <th> Terr.N° </th>
-              <th> Recom.N° </th>
-              <th> Expediente </th>
-              <th> Fecha </th>
-              <th> Monto Pesos </th>
-              <th> Monto UVI </th>
-              <th> Acciones </th>
+                <th> Programa </th>
+                <th> Convenio </th>
+                <th> Empresa </th>
+                <th> Soluciones </th>
+                <th> Obra </th>
+                <th> Expediente </th>
+                <th> AntN° </th>
+                <th> ObN° </th>
+                <th> DevN° </th>
+                <th> Periodo </th>
+                <th> Monto Pesos </th>
+                <th> Mes % </th>
+                <th> Anterior % </th>
+                <th> Acumulado % </th>
+                <th> Expediente Devolucion </th>
+                <th> Monto Devolucion </th>
+                <th> Monto UVI </th>
+                <th> Monto a Cobrar </th>
+                <th> Acciones </th>
             </tr>
         </tfoot>
       </table>
@@ -56,25 +64,34 @@ $(document).ready( function() {
     "language": {"url": 'https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json'},
     "ajax": { "url": '/api/api/certificados/?format=datatables', "format": "GET", },
     order: [[1, "asc"]],
-    columnDefs: [{"targets": -1, "data": "id", "render": function ( data, type, row, meta ) 
-		{ return '<a href="/polizas/crear/certificado/'+data+'"><img src="/static/edit.png" alt="Editar" width="30" heigth="30 /"></a>';} }],
+    columnDefs: [
+    {
+      "className": "dt-center", "targets": "_all" 
+    },
+    {"targets": 0, "data": "id", "render": function ( data, type, row, meta ) 
+		{ return '<a href="/polizas/crear/certificado/'+data+'"><img src="/static/edit.png" alt="Editar" width="30" heigth="30 /"></a>';} }
+    ],
     "columns": [
             {"data": "id", searchable: false},
-            {"data": "certificado_programa.programa_nombre", "name": "certificado_programa.programa_nombre"},
+            {"data": "certificado_obra.obra_programa.programa_nombre", "name": "certificado_obra.obra_programa.programa_nombre"},
+            {"data": "certificado_obra.obra_convenio", "name": "certificado_obra.obra_convenio"},
+            {"data": "certificado_obra.obra_empresa.empresa_nombre", "name": "certificado_obra.obra_empresa.empresa_nombre"},
+            {"data": "certificado_obra.obra_soluciones", "name": "certificado_obra.obra_soluciones"},
             {"data": "certificado_obra.obra_nombre", "name": "certificado_obra.obra_nombre"},
-            {"data": "certificado_localidad.localidad_nombre", "name": "certificado_localidad.localidad_nombre"},
-            {"data": "certificado_empresa.empresa_nombre", "name": "certificado_empresa.empresa_nombre"},
-            {"data": "certificado_rubro_obra"},
-            {"data": "certificado_rubro_anticipo"},
-            {"data": "certificado_rubro_devanticipo"},
-            {"data": "certificado_rubro_691"},
-            {"data": "certificado_rubro_terreno"},
-            {"data": "certificado_rubro_recomposicion"},
+            {"data": "certificado_obra.obra_localidad.localidad_nombre", "name": "certificado_obra.obra_localidad.localidad_nombre"},
             {"data": "certificado_expediente"},
-            {"data": "certificado_fecha"},
+            {"data": "certificado_rubro_anticipo"},
+            {"data": "certificado_rubro_obra"},
+            {"data": "certificado_rubro_devanticipo"},
+            {"data": "certificado_periodo"},
             {"data": "certificado_monto_pesos"},
+            {"data": "certificado_mes_pct"},
+            {"data": "certificado_ante_pct"},
+            {"data": "certificado_acum_pct"},
+            {"data": "certificado_devolucion_expte"},
+            {"data": "certificado_devolucion_monto"},
             {"data": "certificado_monto_uvi"},
-            {"data": "id", searchable: false},
+            {"data": "certificado_monto_cobrar"},
             ]
       });
       

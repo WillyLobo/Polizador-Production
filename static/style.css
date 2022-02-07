@@ -64,7 +64,15 @@
 	background-color: black !important;
 	color:#fff !important;
 }
-
+table{
+    margin: 0 auto;
+    width: 100%;
+    clear: both;
+    border-collapse: collapse;
+    table-layout: fixed; 
+    word-wrap:break-word;
+}
+  
 .dataTables_filter {
     float: left !important;
 }
@@ -73,7 +81,7 @@
 }
  .dataTables_wrapper {
    font-family: Verdana, Geneva, sans-serif; 
-   font-size: 10px; 
+   font-size: 12px; 
    font-style: normal; 
    font-variant: normal;
 }
@@ -90,52 +98,4 @@
 }
 .required:before { 
     content: '*'; 
-}
-
-#yadcf-filter--lista-obras-1 {
-    width: 10vw !important;
-    max-width: 10vw !important;
-}
-#yadcf-filter--lista-obras-3 {
-    width: 7vw !important;
-    max-width: 7vw !important;
-}
-#yadcf-filter--lista-obras-4 {
-    width: 5vw !important;
-    max-width: 5vw !important;
-}
-#yadcf-filter--lista-obras-5 {
-    width: 4vw !important;
-    max-width: 4vw !important;
-}
-#yadcf-filter--lista-obras-6 {
-    width: 4vw !important;
-    max-width: 4vw !important;
-}
-#yadcf-filter--lista-obras-7 {
-    width: 5vw !important;
-    max-width: 5vw !important;
-}
-#yadcf-filter--lista-obras-8 {
-    width: 7vw !important;
-    max-width: 7vw !important;
-}
-#yadcf-filter--lista-obras-9 {
-    width: 7vw !important;
-    max-width: 7vw !important;
-}
-#yadcf-filter--lista-obras-10 {
-    width: 5vw !important;
-    max-width: 5vw !important;
-}
-#yadcf-filter--lista-obras-11 {
-    width: 5vw !important;
-    max-width: 5vw !important;
-}
-#yadcf-filter--lista-obras-12 {
-    width: 5vw !important;
-    max-width: 5vw !important;
-}#yadcf-filter--lista-obras-13 {
-    width: 5vw !important;
-    max-width: 5vw !important;
 }
