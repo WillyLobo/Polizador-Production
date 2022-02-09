@@ -66,20 +66,6 @@ CIENTOS = (
 
 
 
-@register.filter('cuit')
-def cuit(value):
-    """
-    Filtro para dar formato tipo XX-#########-V
-    """
-    strvalue = str(value)
-    if len(strvalue) < 10:
-        return "00-00000000-0"
-    else:
-        tipo = strvalue[0:2]
-        dni = strvalue[2:10]
-        verificador = strvalue[10]
-        return "{}-{}-{}".format(tipo, dni, verificador)
-
 def numero_a_letras(numero):
     numero_entero = int(numero)
     if numero_entero > MAX_NUMERO:
@@ -197,7 +183,7 @@ def leer_millardos(numero):
 @register.filter(is_safe=True)
 def nummoneda(value):
     try:
-        value = int(value)
+        value = float(value)
     except (TypeError, ValueError):
         return value
     return numero_a_moneda(value)
@@ -205,7 +191,22 @@ def nummoneda(value):
 @register.filter(is_safe=True)
 def numletras(value):
     try:
-        value = int(value)
+        value = float(value)
     except (TypeError, ValueError):
         return value
     return numero_a_letras(value)
+
+@register.filter('cuit')
+def cuit(value):
+    """
+    Filtro para dar formato tipo XX-#########-V
+    """
+    strvalue = str(value)
+    if len(strvalue) < 10:
+        return "00-00000000-0"
+    else:
+        tipo = strvalue[0:2]
+        dni = strvalue[2:10]
+        verificador = strvalue[10]
+        return "{}-{}-{}".format(tipo, dni, verificador)
+

@@ -16,11 +16,11 @@
                 <th> Recibo de Pago </th>
                 <th> Entidad Aseguradora </th>
                 <th> Obra </th>
-                <th> Convenio Específico </th>
-                <th> Expediente de Obra </th>
                 <th> Empresa/Tomador </th>
                 <th> Monto Sustituido(Pesos) </th>
                 <th> Monto Sustituido(UVI) </th>
+                <th> Convenio Específico </th>
+                <th> Expediente de Obra </th>
                 <th> Editor </th>
                 <th> Ultimo Editor </th>
               </tr>
@@ -38,11 +38,11 @@
               <th> Recibo de Pago </th>
               <th> Entidad Aseguradora </th>
               <th> Obra </th>
-              <th> Convenio Específico </th>
-              <th> Expediente de Obra </th>
               <th> Empresa/Tomador </th>
               <th> Monto Sustituido(Pesos) </th>
               <th> Monto Sustituido(UVI) </th>
+              <th> Convenio Específico </th>
+              <th> Expediente de Obra </th>
               <th> Editor </th>
               <th> Ultimo Editor </th>
             </tr>
@@ -65,91 +65,48 @@
       columnDefs: [{"targets": 0, "data": "id", "render": function ( data, type, row, meta ) 
 		{ return '<a href="/polizas/update/'+data+'"><img src="/static/edit.png" alt="Editar" width="30" height="30"/></a><a href="/polizas/imprimir/'+data+'"><img src="/static/print.png" alt="Imprimir" width="30" height="30"/></a>';} }],
       columns: [
-        {"data":"id", searchable: false},
+        {"data":"id", searchable: false, orderable: false},
         {"data":"poliza_fecha"},
-        {"data":"poliza_receptor.receptor_nombre", "name":"poliza_receptor.receptor_nombre", searchable: false},
-        {"data":"poliza_area.area_nombre", "name":"poliza_area.area_nombre"},
-        {"data":"poliza_expediente"},
-        {"data":"poliza_concepto"},
+        {"data":"poliza_receptor.receptor_nombre", "name":"poliza_receptor.receptor_nombre", searchable: false, orderable: false},
+        {"data":"poliza_area.area_nombre", "name":"poliza_area.area_nombre", orderable: false},
+        {"data":"poliza_expediente", orderable: false},
+        {"data":"poliza_concepto", searchable: false, orderable: false},
         {"data":"poliza_numero"},
-        {"data":"poliza_anexo"},
+        {"data":"poliza_anexo", searchable: false, orderable: false},
         {"data":"poliza_recibo"},
-        {"data":"poliza_aseguradora.aseguradora_nombre", "name":"poliza_aseguradora.aseguradora_nombre"},
+        {"data":"poliza_aseguradora.aseguradora_nombre", "name":"poliza_aseguradora.aseguradora_nombre", orderable: false},
         {"data":"poliza_obra_nombre"},
-        {"data":"poliza_obra_convenio"},
-        {"data":"poliza_obra_expediente"},
         {"data":"poliza_tomador.empresa_nombre", "name":"poliza_tomador.empresa_nombre"},
         {"data":"poliza_monto_pesos"},
         {"data":"poliza_monto_uvi"},
+        {"data":"poliza_obra_convenio"},
+        {"data":"poliza_obra_expediente"},
         {"data":"poliza_creador", searchable: false},
         {"data":"poliza_editor", searchable: false},
       ],
     });
     yadcf.init(TablePoliza, [
         {
+          // Fecha
           column_number: 1,
           filter_type: "select",
           filter_default_label: "Filtrar",
         },
         {
+          // Area
           column_number: 3,
           filter_type: "select",
           filter_default_label: "Filtrar"
         },
         {
-          column_number: 4,
-          filter_type: "select",
-          filter_default_label: "Filtrar"
-        },
-        {
-          // YADCF doesnt seem to support "get_display" objects filtering. Leaving the code for the "Compulsa Tipo"
-          // column as placeholder until i find a solution for the problem.
-          column_number: 5,
-          filter_type: "select",
-          filter_default_label: "Filtrar"
-        },
-        {
-          column_number: 6,
-          filter_type: "select",
-          filter_default_label: "Filtrar"
-        },
-        {
-          column_number: 7,
-          filter_type: "select",
-          filter_default_label: "Filtrar"
-        },
-        {
-          column_number: 8,
-          filter_type: "select",
-          filter_default_label: "Filtrar"
-        },
-        {
+          // Aseguradora
           column_number: 9,
           filter_type: "select",
           filter_default_label: "Filtrar"
         },
         {
-          column_number: 10,
-          filter_type: "select",
-          filter_default_label: "Filtrar"
-        },
-        {
-          column_number: 12,
-          filter_type: "select",
-          filter_default_label: "Filtrar"
-        },
-        {
+          // Empresa
           column_number: 13,
-          filter_type: "select",
-          filter_default_label: "Filtrar"
-        },
-        {
-          column_number: 14,
-          filter_type: "select",
-          filter_default_label: "Filtrar"
-        },
-        {
-          column_number: 15,
           filter_type: "select",
           filter_default_label: "Filtrar"
         },
