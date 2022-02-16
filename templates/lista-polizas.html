@@ -77,7 +77,9 @@
         {"data":"poliza_aseguradora.aseguradora_nombre", "name":"poliza_aseguradora.aseguradora_nombre", orderable: false},
         {"data":"poliza_obra_nombre"},
         {"data":"poliza_tomador.empresa_nombre", "name":"poliza_tomador.empresa_nombre"},
-        {"data":"poliza_monto_pesos"},
+        {"data":"poliza_monto_pesos", 'render': function (poliza_monto_pesos) {  
+          return '$' + poliza_monto_pesos;
+          }, searchable: false, orderable: false},
         {"data":"poliza_monto_uvi"},
         {"data":"poliza_obra_convenio"},
         {"data":"poliza_obra_expediente"},

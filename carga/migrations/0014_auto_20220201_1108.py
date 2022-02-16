@@ -10,30 +10,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='certificado',
-            name='certificado_empresa',
-        ),
-        migrations.RemoveField(
-            model_name='certificado',
-            name='certificado_localidad',
-        ),
-        migrations.RemoveField(
-            model_name='certificado',
-            name='certificado_programa',
-        ),
-        migrations.RemoveField(
-            model_name='certificado',
-            name='certificado_rubro_691',
-        ),
-        migrations.RemoveField(
-            model_name='certificado',
-            name='certificado_rubro_recomposicion',
-        ),
-        migrations.RemoveField(
-            model_name='certificado',
-            name='certificado_rubro_terreno',
-        ),
         migrations.AddField(
             model_name='certificado',
             name='certificado_acum_pct',

@@ -112,10 +112,14 @@
         {"data":"obra_licitacion_tipo", orderable: false},
         {"data":"obra_licitacion_numero", orderable: false},
         {"data":"obra_licitacion_ano", orderable: false},
-        {"data":"obra_contrato_nacion_pesos"},
+        {"data":"obra_contrato_nacion_pesos", 'render': function (obra_contrato_nacion_pesos) {  
+          return '$' + obra_contrato_nacion_pesos;
+          }, searchable: false, orderable: false},
         {"data":"obra_contrato_nacion_uvi"},
         {"data":"obra_contrato_nacion_uvi_fecha", orderable: false, searchable: false},
-        {"data":"obra_contrato_provincia_pesos"},
+        {"data":"obra_contrato_provincia_pesos", 'render': function (obra_contrato_provincia_pesos) {  
+          return '$' + obra_contrato_provincia_pesos;
+          }, searchable: false, orderable: false},
         {"data":"obra_contrato_provincia_uvi"},
         {"data":"obra_contrato_provincia_uvi_fecha", orderable: false, searchable: false},
         {"data":"obra_nomenclatura", orderable: false},
