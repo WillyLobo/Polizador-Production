@@ -8,6 +8,13 @@
                 <th> ID </th>
                 <th> Nombre </th>
                 <th> CUIT </th>
+                <th> Titular </th>
+                <th> Caracter </th>
+                <th> DNI </th>
+                <th> Dirección </th>
+                <th> Correo Primario </th>
+                <th> Correo Secundario </th>
+                <th> Registro </th>
                 <th> Acciones </th>
               </tr>
           </thead>
@@ -16,6 +23,13 @@
               <th> ID </th>
               <th> Nombre </th>
               <th> CUIT </th>
+              <th> Titular </th>
+              <th> Caracter </th>
+              <th> DNI </th>
+              <th> Dirección </th>
+              <th> Correo Primario </th>
+              <th> Correo Secundario </th>
+              <th> Registro </th>
               <th> Acciones </th>
             </tr>
         </tfoot>
@@ -40,23 +54,30 @@ $(document).ready( function() {
       {"data": "id", searchable: false},
       {"data": "empresa_nombre"},
       {"data": "empresa_cuit"},
+      {"data": "empresa_titular_nombre"},
+      {"data": "empresa_titular_titulo"},
+      {"data": "empresa_titular_dni"},
+      {"data": "empresa_direccion"},
+      {"data": "empresa_correo_p"},
+      {"data": "empresa_correo_s"},
+      {"data": "empresa_inscripcion"},
       {"data": "id", searchable: false},
     ],
     });
-    yadcf.init(TableEmpresa, [
-        {
-          column_number: 1,
-					filter_type: "select",
-          filter_default_label: "Filtrar"
-        },
-        {
-          column_number: 2,
-          filter_type: "select",
-          filter_default_label: "Filtrar"
-        }
-        ],
-        "footer",
-        );
+    //yadcf.init(TableEmpresa, [
+    //    {
+    //      column_number: 1,
+		//			filter_type: "select",
+    //      filter_default_label: "Filtrar"
+    //    },
+    //    {
+    //      column_number: 2,
+    //      filter_type: "select",
+    //      filter_default_label: "Filtrar"
+    //    }
+    //    ],
+    //    "footer",
+    //    );
 });
 </script>
 

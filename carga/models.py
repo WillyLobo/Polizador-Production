@@ -153,7 +153,7 @@ class Obra(models.Model):
     
     obra_nombre			    = models.TextField("Nombre de la Obra tal como figura en el contrato")
     obra_soluciones		    = models.DecimalField("Cantidad de soluciones", max_digits=4, decimal_places=0, null=True, blank=True)
-    obra_empresa		    = models.ForeignKey("Empresa", on_delete=models.CASCADE, verbose_name="Empresa")
+    obra_empresa		    = models.ForeignKey("Empresa", on_delete=models.CASCADE, verbose_name="Obra_Empresa")
     obra_localidad		    = models.ForeignKey("Localidad", on_delete=models.CASCADE)
     obra_conjunto           = models.TextField("Conjunto Licitado:", blank=True, null=True)
     obra_grupo              = models.CharField("Grupo", max_length=4, blank=True, null=True)
