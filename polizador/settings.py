@@ -90,13 +90,22 @@ with open("/var/www/Polizador-Production/polizador/DBSECRET.TXT") as s:
         DBSECRET = s.read().strip()
 DATABASES = {
     'default': {
-        "ENGINE": "django.db.backends.mysql",
+        "ENGINE": "django.db.backends.postgresql",
             "HOST": "127.0.0.1",
             "USER": "willy",
 	    "PASSWORD":DBSECRET,
             "NAME":"polizadordb",
     }
 }
+# DATABASES = {
+#     'default': {
+#         "ENGINE": "django.db.backends.mysql",
+#             "HOST": "127.0.0.1",
+#             "USER": "willy",
+# 	    "PASSWORD":DBSECRET,
+#             "NAME":"polizadordb",
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

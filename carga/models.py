@@ -264,3 +264,6 @@ class Certificado(models.Model):
     def save(self):
         self.certificado_monto_cobrar = self.certificado_monto_pesos + self.certificado_devolucion_monto
         return super(Certificado, self).save()
+    
+    def __str__(self):
+        return f"{self.certificado_obra} - Ant. N°{self.certificado_rubro_anticipo} - Ob. N°{self.certificado_rubro_obra} - Dev. N°{self.certificado_rubro_devanticipo}"
