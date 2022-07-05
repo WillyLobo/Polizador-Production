@@ -1,3 +1,4 @@
+from distutils.log import Log
 from django.shortcuts import render
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
@@ -8,51 +9,87 @@ from django.http import HttpResponseRedirect
 
 from carga import models, forms
 
-class Imprimir(LoginRequiredMixin, generic.DetailView):
-	login_url = "/"
-	redirect_field_name = "login"
-
-	model 			= models.Poliza
-	template_name 	= "imprimir.html"
-	
-class Listado(LoginRequiredMixin, generic.ListView):
-	login_url = "/"
-	redirect_field_name = "login"
-
-	model 			= models.Poliza
-	template_name 	= "lista.html"
-
 class CrearPoliza(LoginRequiredMixin, generic.CreateView):
 	login_url = "/"
 	redirect_field_name = "login"
-
 	model = models.Poliza
-	template_name = "crear.html"
+	template_name = "crear-poliza.html"
 	form_class = forms.PolizaForm
 	success_url = reverse_lazy("carga:crear-poliza")
+
+	def form_valid(self, form):
+		self.object = form.save(commit=False)
+		self.object.poliza_creador = self.request.user
+		self.object.poliza_editor = self.request.user
+		self.object.save()
+		return super().form_valid(form)
+
+class UpdatePoliza(LoginRequiredMixin, generic.UpdateView):
+	login_url = "/"
+	redirect_field_name = "login"
+	model = models.Poliza
+	template_name = "update-poliza.html"
+	form_class = forms.PolizaForm
+	success_url = reverse_lazy("api:polizas")
+
+class CrearPolizaMovimiento(LoginRequiredMixin, generic.CreateView):
+	login_url = "/"
+	redirect_field_name = "login"
+	model = models.Poliza_Movimiento
+	template_name = "crear-movimiento-poliza.html"
+	form_class = forms.PolizaMovimientoForm
+	success_url = reverse_lazy("api:polizas")
+
+class UpdatePolizaMovimiento(LoginRequiredMixin, generic.UpdateView):
+	login_url = "/"
+	redirect_field_name = "login"
+	model = models.Poliza_Movimiento
+	template_name = "update-movimiento-poliza.html"
+	form_class = forms.PolizaMovimientoForm
+	success_url = reverse_lazy("api:polizas")
+
+class EstadoPoliza(generic.DetailView):
+	model = models.Poliza
+	template_name = "estado-poliza.html"
+
+class ImprimirLegacyPoliza(LoginRequiredMixin, generic.DetailView):
+	login_url = "/"
+	redirect_field_name = "login"
+
+	model 			= models.LegacyPoliza
+	template_name 	= "legacy-imprimir-poliza.html"
+	
+class CrearLegacyPoliza(LoginRequiredMixin, generic.CreateView):
+	login_url = "/"
+	redirect_field_name = "login"
+
+	model = models.LegacyPoliza
+	template_name = "legacy-crear-poliza.html"
+	form_class = forms.LegacyPolizaForm
+	success_url = reverse_lazy("carga:legacy-crear-poliza")
 
 	def form_valid(self, form):
 		"""
 		Deja constancia del Usuario que carga la póliza en object.poliza_creador
 		"""
 		self.object = form.save(commit=False)
-		self.object.poliza_creador = self.request.user
-		self.object.poliza_editor = self.request.user
+		self.object.legacy_poliza_creador = self.request.user
+		self.object.legacy_poliza_editor = self.request.user
 		self.object.save()
 		return HttpResponseRedirect(self.get_success_url())
 
-class UpdatePoliza(LoginRequiredMixin, generic.UpdateView):
+class UpdateLegacyPoliza(LoginRequiredMixin, generic.UpdateView):
 	login_url = "/"
 	redirect_field_name = "login"
 
-	model = models.Poliza
-	template_name = "update.html"
-	form_class = forms.PolizaForm
-	success_url = reverse_lazy("api:polizas")
+	model = models.LegacyPoliza
+	template_name = "legacy-update-poliza.html"
+	form_class = forms.LegacyPolizaForm
+	success_url = reverse_lazy("api:legacy_polizas")
 
 	def form_valid(self, form):
 		self.object = form.save(commit=False)
-		self.object.poliza_editor = self.request.user
+		self.object.legacy_poliza_editor = self.request.user
 		self.object.save()
 		return HttpResponseRedirect(self.get_success_url())
 	
@@ -110,6 +147,9 @@ class UpdateCertificado(LoginRequiredMixin, generic.UpdateView):
 	form_class = forms.CertificadoForm
 	success_url = reverse_lazy("api:certificados")
 
+class EstadoObra(generic.DetailView):
+	model = models.Obra
+	template_name = "estado-obra.html"
 # Import/export plugin
 # def export(request):
 # 	obra_resource = ObraResource()

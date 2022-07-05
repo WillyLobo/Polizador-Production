@@ -213,10 +213,6 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': 'Certificados',
             },
         ),
-        migrations.AddConstraint(
-            model_name='poliza',
-            constraint=models.UniqueConstraint(fields=('poliza_fecha', 'poliza_numero', 'poliza_aseguradora', 'poliza_receptor'), name='poliza-constraint'),
-        ),
         migrations.RenameField(
             model_name='empresa',
             old_name='empresa_titular',

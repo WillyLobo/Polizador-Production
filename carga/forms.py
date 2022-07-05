@@ -1,10 +1,16 @@
 from django import forms
-
 from django.contrib.auth.forms import AuthenticationForm
-
 from django_select2 import forms as s2forms
-
 from carga import models
+from datetime import datetime
+import locale
+
+def dateconverter(value):
+	locale.setlocale(locale.LC_TIME, "es_AR.UTF-8")
+	value = datetime.strptime(value, "%b/%y").date()
+	value = "{0:%d}-{0:%m}-{0:%Y}".format(value,"day","month","year")
+	print(value)
+	return value
 
 class LoginForm(AuthenticationForm):
 	def confirm_login_allowed(self, user):
@@ -17,12 +23,12 @@ class EmpresaWidget(s2forms.ModelSelect2Widget):
 
 class PolizaForm(forms.ModelForm):
 	CONCEPTO = (
-        ("C", "Garantía de Ejecución de Contrato"),
-        ("F", "Garantía de Sustitución de Fondo de Reparo"),
-        ("A", "Garantía de Anticipo Financiero")
-    )
+		("C", "Garantía de Ejecución de Contrato"),
+		("F", "Garantía de Sustitución de Fondo de Reparo"),
+		("A", "Garantía de Anticipo Financiero")
+	)
+	poliza_fecha	= forms.DateField(input_formats=["%d/%m/%Y"], localize=True)
 	poliza_concepto = forms.ChoiceField(choices=CONCEPTO)
-	poliza_fecha	= forms.DateField(input_formats=['%d/%m/%Y'], localize=True)
 	
 	class Meta:
 		model = models.Poliza
@@ -30,19 +36,22 @@ class PolizaForm(forms.ModelForm):
 		widgets = {
 			"poliza_tomador" : EmpresaWidget
 		}
-		# certificado_programa
-		# certificado_obra
-		# certificado_localidad
-		# certificado_rubro_obra = forms.IntegerField()
-		# certificado_rubro_anticipo
-		# certificado_rubro_devanticipo
-		# certificado_rubro_691
-		# certificado_rubro_terreno
-		# certificado_rubro_recomposicion
-		# certificado_expediente
-		# certificado_fecha
-		# certificado_monto_pesos
-		# certificado_monto_uvi
+		
+class LegacyPolizaForm(forms.ModelForm):
+	CONCEPTO = (
+        ("C", "Garantía de Ejecución de Contrato"),
+        ("F", "Garantía de Sustitución de Fondo de Reparo"),
+        ("A", "Garantía de Anticipo Financiero")
+    )
+	legacy_poliza_concepto = forms.ChoiceField(choices=CONCEPTO)
+	legacy_poliza_fecha	= forms.DateField(input_formats=['%d/%m/%Y'], localize=True)
+	
+	class Meta:
+		model = models.LegacyPoliza
+		fields = "__all__"
+		widgets = {
+			"legacy_poliza_tomador" : EmpresaWidget
+		}
 
 class EmpresaForm(forms.ModelForm):
 	class Meta:
@@ -61,4 +70,8 @@ class CertificadoForm(forms.ModelForm):
 	class Meta:
 		model = models.Certificado
 		fields = "__all__"
-	
+
+class PolizaMovimientoForm(forms.ModelForm):
+	class Meta:
+		model = models.Poliza_Movimiento
+		fields = "__all__"

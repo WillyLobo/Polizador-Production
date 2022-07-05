@@ -21,7 +21,7 @@
                 <th> Mes % </th>
                 <th> Anterior % </th>
                 <th> Acumulado % </th>
-                <th> Expediente Devolucion </th>
+                <th> Financiamiento </th>
                 <th> Monto Devolucion </th>
                 <th> Monto a Cobrar </th>
                 <th> Monto UVI </th>
@@ -47,7 +47,7 @@
                 <th> Mes % </th>
                 <th> Anterior % </th>
                 <th> Acumulado % </th>
-                <th> Expediente Devolucion </th>
+                <th> Financiamiento </th>
                 <th> Monto Devolucion </th>
                 <th> Monto UVI </th>
                 <th> Monto a Cobrar </th>
@@ -64,10 +64,14 @@ $(document).ready( function() {
     serverSide: true,
     processing: true,
     scrollX: true,
+    dom: '<fl<t>ip>B',
+      buttons: [
+        {extend: 'excel', text: "Exportar a Excel"}
+    ],
     lengthMenu: [[25, 50, 100, -1], [25, 50, 100, "All"]],
-    "language": {"url": 'https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json'},
+    "language": {"url": 'https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-AR.json'},
     "ajax": { "url": '/api/api/certificados/?format=datatables', "format": "GET", },
-    order: [[0, "asc"]],
+    order: [[12, "desc"]],
     columnDefs: [
     {
       "className": "dt-center", "targets": "_all" 
@@ -87,7 +91,9 @@ $(document).ready( function() {
             {"data": "certificado_rubro_anticipo", orderable: false},
             {"data": "certificado_rubro_obra", orderable: false},
             {"data": "certificado_rubro_devanticipo", orderable: false},
-            {"data": "certificado_periodo"},
+            {"data": "certificado_fecha", 
+              render: $.fn.dataTable.render.moment("YYYY-MM-DD","MMMM/YY","es")
+          },
             {"data": "certificado_monto_pesos",
             'render': function (certificado_monto_pesos) {  
               return '$' + certificado_monto_pesos;
@@ -104,7 +110,7 @@ $(document).ready( function() {
             'render': function (certificado_acum_pct) {  
               return certificado_acum_pct + "%";
               }, searchable: false, orderable: false},
-            {"data": "certificado_devolucion_expte", orderable: false},
+            {"data": "certificado_financiamiento", orderable: false},
             {"data": "certificado_devolucion_monto",
             'render': function (certificado_devolucion_monto) {  
               return '$' + certificado_devolucion_monto;
@@ -117,7 +123,8 @@ $(document).ready( function() {
               {"data": "id", searchable: false, orderable: false},
             ]
       });
-      
+      TableCertificado.buttons().container()
+    .appendTo( $('.col-sm-6:eq(0)', TableCertificado.table().container() ) );
 yadcf.init(TableCertificado, [
         {
           // Programa

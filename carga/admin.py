@@ -16,10 +16,15 @@ class EmpresaAdmin(ImportExportMixin, admin.ModelAdmin):
 	list_display = ["id", "empresa_nombre", "empresa_cuit"]
 	ordering = ["id"]
 	resource_class = resources.EmpresaResource
-
 class PolizaAdmin(ImportExportMixin, admin.ModelAdmin):
 	resource_class = resources.PolizaResource
-	list_display = ("poliza_receptor", "poliza_concepto", "poliza_numero", "poliza_tomador")
+
+class PolizaMovimientoAdmin(ImportExportMixin, admin.ModelAdmin):
+	resource_class = resources.PolizaMovimientoResource
+
+class LegacyPolizaAdmin(ImportExportMixin, admin.ModelAdmin):
+	resource_class = resources.LegacyPolizaResource
+	list_display = ("legacy_poliza_receptor", "legacy_poliza_concepto", "legacy_poliza_numero", "legacy_poliza_tomador")
 
 class ProgramaAdmin(ImportExportMixin, admin.ModelAdmin):
 	resource_class = resources.ProgramaResource
@@ -52,7 +57,7 @@ admin.site.register(models.Receptor, ReceptorAdmin)
 admin.site.register(models.Area, AreaAdmin)
 admin.site.register(models.Aseguradora, AseguradoraAdmin)
 admin.site.register(models.Empresa, EmpresaAdmin)
-admin.site.register(models.Poliza, PolizaAdmin)
+admin.site.register(models.LegacyPoliza, LegacyPolizaAdmin)
 admin.site.register(models.Programa, ProgramaAdmin)
 admin.site.register(models.Departamento, DepartamentoAdmin)
 admin.site.register(models.Localidad, LocalidadAdmin)
@@ -61,3 +66,5 @@ admin.site.register(models.Obra, ObraAdmin)
 admin.site.register(models.Prototipo, ProgramaAdmin)
 admin.site.register(models.Agente, AgenteAdmin)
 admin.site.register(models.Certificado, CertificadoAdmin)
+admin.site.register(models.Poliza, PolizaAdmin)
+admin.site.register(models.Poliza_Movimiento, PolizaMovimientoAdmin)

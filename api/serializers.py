@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from yaml import serialize_all
 
 from carga import models
 
@@ -22,21 +23,20 @@ class EmpresaAPI(serializers.ModelSerializer):
 		model = models.Empresa
 		fields = "__all__"
 
-class PolizaAPI(serializers.ModelSerializer):
-	my_absolute_url			= serializers.URLField(source="get_absolute_url", read_only=True)
-	poliza_fecha			= serializers.DateField(format="%d-%m-%Y", input_formats=None)
-	poliza_receptor         = ReceptorAPI()
-	poliza_area             = AreaAPI()
-	poliza_aseguradora      = AseguradoraAPI()
-	poliza_tomador          = EmpresaAPI()
-	poliza_monto_pesos		= serializers.DecimalField(max_digits=12, decimal_places=2, localize=True)
-	poliza_monto_uvi		= serializers.DecimalField(max_digits=12, decimal_places=2, localize=True)
-	poliza_concepto			= serializers.CharField(source="get_poliza_concepto_display")
-	poliza_creador			= serializers.StringRelatedField()
-	poliza_editor			= serializers.StringRelatedField()
+class LegacyPolizaAPI(serializers.ModelSerializer):
+	legacy_poliza_fecha				= serializers.DateField(format="%d/%m/%Y", input_formats=None)
+	legacy_poliza_receptor         	= ReceptorAPI()
+	legacy_poliza_area             	= AreaAPI()
+	legacy_poliza_aseguradora      	= AseguradoraAPI()
+	legacy_poliza_tomador          	= EmpresaAPI()
+	legacy_poliza_monto_pesos		= serializers.DecimalField(max_digits=12, decimal_places=2, localize=True)
+	legacy_poliza_monto_uvi			= serializers.DecimalField(max_digits=12, decimal_places=2, localize=True)
+	legacy_poliza_concepto			= serializers.CharField(source="get_legacy_poliza_concepto_display")
+	legacy_poliza_creador			= serializers.StringRelatedField()
+	legacy_poliza_editor			= serializers.StringRelatedField()
 
 	class Meta:
-		model = models.Poliza
+		model = models.LegacyPoliza
 		fields = "__all__"
 
 class ProgramaAPI(serializers.ModelSerializer):
@@ -97,6 +97,24 @@ class CertificadoAPI(serializers.ModelSerializer):
 		fields = "__all__"
 	
 	certificado_obra		= ObraAPI()
+	certificado_financiamiento	= serializers.CharField(source="get_certificado_financiamiento_display")
 	certificado_monto_pesos = serializers.DecimalField(max_digits=12, decimal_places=2, localize=True) 
 	certificado_monto_uvi	= serializers.DecimalField(max_digits=12, decimal_places=2, localize=True)
+	certificado_devolucion_monto = serializers.DecimalField(max_digits=12, decimal_places=2, localize=True)
 	certificado_monto_cobrar = serializers.DecimalField(max_digits=12, decimal_places=2, localize=True)
+	certificado_fecha		= serializers.DateField(input_formats=None)
+
+class PolizaAPI(serializers.ModelSerializer):
+	class Meta:
+		model = models.Poliza
+		fields = "__all__"
+		
+	poliza_fecha		= serializers.DateField(format="%d/%m/%Y", input_formats=None)
+	poliza_concepto		= serializers.CharField(source="get_poliza_concepto_display")
+	poliza_aseguradora 	= AseguradoraAPI()
+	poliza_tomador 		= EmpresaAPI()
+	poliza_obra			= ObraAPI()
+	poliza_monto_pesos	= serializers.DecimalField(max_digits=12, decimal_places=2, localize=True)
+	poliza_monto_uvi	= serializers.DecimalField(max_digits=12, decimal_places=2, localize=True)
+	poliza_creador		= serializers.StringRelatedField()
+	poliza_editor		= serializers.StringRelatedField()

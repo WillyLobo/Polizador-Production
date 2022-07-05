@@ -76,6 +76,10 @@
       serverSide: true,
       processing: true,
       scrollX: true,
+      dom: '<fl<t>ip>B',
+        buttons: [
+          {extend: 'excel', text: "Exportar a Excel"}
+      ],
       order: [[0, "desc"]],
       lengthMenu: [[25, 50, 100, -1], [25, 50, 100, "All"]],
       "language": {"url": 'https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json'},
@@ -89,8 +93,16 @@
         "data": "id", 
         "render": function ( data, type, row, meta ) 
 		  { 
-        return '<a href="/polizas/crear/obra/'+data+'"><img src="/static/edit.png" alt="Editar" width="30" height="30" /></a><a href=" '+data+'"><img src="/static/print.png" alt="Imprimir" width="30" heigth="30" /></a>';
+        return '<a href="/polizas/crear/obra/'+data+'"><img src="/static/edit.png" alt="Editar" width="30" height="30" /></a><a href="/polizas/crear/obra/estado/'+data+'"><img src="/static/file-bar-graph.svg" alt="Estado" width="30" heigth="30" /></a>';
       }
+      },
+      {
+        targets: 1,
+        render: $.fn.dataTable.render.ellipsis(150),
+      },
+      {
+        targets: 3,
+        render: $.fn.dataTable.render.ellipsis(15),
       },
       {
         "targets": 26,
@@ -131,10 +143,12 @@
         {"data":"obra_observaciones", orderable: false},
       ],
       });
-      // 24
+      TableObra.buttons().container()
+    .appendTo( $('.col-sm-6:eq(0)', TableObra.table().container() ) );
+      // 24 Columnas
       yadcf.init(TableObra, [
           {
-            column_number: 2,
+            column_number: 1,
             filter_type: "select",
             filter_default_label: "Filtrar",
           },

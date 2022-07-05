@@ -10,14 +10,18 @@
 			<li class="nav-item dropdown">
 				<a class="nav-link active dropdown-toggle" href="#" id="dropdown-listas" data-bs-toggle="dropdown" aria-expanded="false">Listados</a>
 				<ul class="dropdown-menu" aria-labelledby="dropdown-listas">
+				  <li><a class="dropdown-item" href="{% url "api:legacy_polizas" %}">Legacy Pólizas</a></li>
 				  <li><a class="dropdown-item" href="{% url "api:polizas" %}">Listar Pólizas</a></li>
 				  <li><a class="dropdown-item" href="{% url "api:empresas" %}">Listar Empresas</a></li>
 				  <li><a class="dropdown-item" href="{% url "api:obras" %}">Listar Obras</a></li>
 				  <li><a class="dropdown-item" href="{% url "api:certificados" %}">Listar Certificados</a></li>
 				</ul>
 			  </li>
-			  <li class="nav-item">
-			  <a class="nav-link active" aria-current="page" href="{% url "carga:crear-poliza" %}">Cargar Póliza</a>
+			<li class="nav-item">
+			  <a class="nav-link active" aria-current="page" href="{% url "carga:legacy-crear-poliza" %}">Cargar Póliza VIEJO</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link active" aria-current="page" href="{% url "carga:crear-poliza" %}">Cargar Póliza</a>
 			</li>
 			<li class="nav-item">
 			  <a class="nav-link active" aria-current="page" href="{% url "carga:crear-empresa" %}">Cargar Empresa</a>

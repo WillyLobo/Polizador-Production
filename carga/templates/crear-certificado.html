@@ -15,19 +15,20 @@
 {{ form.errors }}
     <div class="row mx-md-n5"> {{form.certificado_obra.label}} {{ form.certificado_obra }} </div>
       <div class="row row-cols-3">
+        <div class="col-auto"> <small>{{form.certificado_financiamiento.label}}</small> {{ form.certificado_financiamiento }} </div>
         <div class="col-auto"> <small>{{form.certificado_rubro_anticipo.label}}</small> {{ form.certificado_rubro_anticipo }} </div>
         <div class="col-auto"> <small>{{form.certificado_rubro_obra.label}}</small> {{ form.certificado_rubro_obra }} </div>
         <div class="col-auto"> <small>{{form.certificado_rubro_devanticipo.label}}</small> {{ form.certificado_rubro_devanticipo }} </div>
       </div>
     <div class="row mx-md-n5"> {{form.certificado_expediente.label}} {{ form.certificado_expediente }} </div>
-    <div class="row mx-md-n5"> {{form.certificado_periodo.label}} {{ form.certificado_periodo }} </div>
-    <div class="row mx-md-n5"> {{form.certificado_monto_pesos.label}} {{ form.certificado_monto_pesos }} </div>
+    <div class="row mx-md-n5"> Fecha de Medición(Tal como figura en la Foja de Medición) {{ form.certificado_fecha }} </div>
+    <div class="row mx-md-n5"> {{form.certificado_monto_pesos.label}} (Monto sin Descuento de Anticipo) {{ form.certificado_monto_pesos }} </div>
     <div class="row mx-md-n5"> {{form.certificado_mes_pct.label}} {{ form.certificado_mes_pct }} </div>
     <div class="row mx-md-n5"> {{form.certificado_ante_pct.label}} {{ form.certificado_ante_pct }} </div>
     <div class="row mx-md-n5"> {{form.certificado_acum_pct.label}} {{ form.certificado_acum_pct }} </div>
     <div class="row mx-md-n5"> {{form.certificado_devolucion_expediente.label}} {{ form.certificado_devolucion_expediente }} </div>
     <div class="row mx-md-n5"> {{form.certificado_devolucion_monto.label}} {{ form.certificado_devolucion_monto }} </div>
-    <div class="row mx-md-n5"> {{form.certificado_monto_uvi.label}} {{ form.certificado_monto_uvi }} </div>
+    <div class="row mx-md-n5"> {{form.certificado_monto_uvi.label}} (Monto Final en UVI) {{ form.certificado_monto_uvi }} </div>
     <input type='submit' value='Guardar' class="btn" />
 </form>
 </div>
@@ -37,11 +38,7 @@
 <script>
 $(function () {
     $.datetimepicker.setLocale('es');
-    $("#id_obra_fecha_entrega").datetimepicker({
-    timepicker:false,
-    format: 'd/m/Y',
-    });
-    $("#id_obra_fecha_contrato").datetimepicker({
+    $("#id_certificado_fecha").datetimepicker({
     timepicker:false,
     format: 'd/m/Y',
     });

@@ -20,26 +20,30 @@
     <div class="row mx-md-n5"> {{form.obra_grupo.label}} {{form.obra_grupo}} </div>
     <div class="row mx-md-n5"> {{form.obra_plazo.label}} {{form.obra_plazo}} </div>
     <div class="row mx-md-n5 required"> {{form.obra_programa.label}} {{form.obra_programa}} </div>
+    <div class="row mx-md-n5"> {{form.obra_conjunto_licitado.label}} {{form.obra_conjunto_licitado}} </div>
     <div class="row mx-md-n5"> {{form.obra_convenio.label}} {{form.obra_convenio}} </div>    
     <div class="row mx-md-n5 required"> {{form.obra_expediente.label}} {{form.obra_expediente}} </div>
     <div class="row mx-md-n5"> {{form.obra_resolucion.label}} {{form.obra_resolucion}} </div>
-    <div class="row mx-md-n5"> {{form.obra_licitacion_tipo.label}} {{form.obra_licitacion_tipo}} </div>
-    <div class="row mx-md-n5"> {{form.obra_licitacion_numero.label}} {{form.obra_licitacion_numero}} </div>
-    <div class="row mx-md-n5"> {{form.obra_licitacion_ano.label}} {{form.obra_licitacion_ano}} </div>
+    <div class="row mx-md-n5"><u>Compulsa:</u> </div>
+    <div class="row row-cols-3">
+      <div class="col-auto"> Tipo: {{ form.obra_licitacion_tipo }} </div>
+      <div class="col-auto"> {{form.obra_licitacion_numero.label}} {{ form.obra_licitacion_numero }} </div>
+      <div class="col-auto"> {{form.obra_licitacion_ano.label}} {{ form.obra_licitacion_ano }} </div>
+    </div>
     <div class="row mx-md-n5"> {{form.obra_nomenclatura.label}} {{form.obra_nomenclatura}} </div>
-    <div class="row mx-md-n5"> {{form.obra_nomenclatura_plano.label}} {{form.obra_nomenclatura_plano}} </div>
-    <div class="row mx-md-n5"> {{form.obra_fecha_entrega.label}} {{form.obra_fecha_entrega}} </div>
     <div class="row mx-md-n5"> {{form.obra_fecha_contrato.label}} {{form.obra_fecha_contrato}} </div>
-    <div class="row mx-md-n5"> {{form.obra_expediente_costo.label}} {{form.obra_expediente_costo}} </div>
     <div class="row mx-md-n5 required"> {{form.obra_inspector.label}} {{form.obra_inspector}} </div>
-    <div class="row mx-md-n5"> {{form.obra_observaciones.label}} {{form.obra_observaciones}} </div>
-    <div class="row mx-md-n5"> {{form.obra_conjunto.label}} {{form.obra_conjunto}} </div>
     <div class="row mx-md-n5"> {{form.obra_contrato_nacion_pesos.label}} {{form.obra_contrato_nacion_pesos}} </div>
     <div class="row mx-md-n5"> {{form.obra_contrato_nacion_uvi.label}} {{form.obra_contrato_nacion_uvi}} </div>
     <div class="row mx-md-n5"> {{form.obra_contrato_nacion_uvi_fecha.label}} {{form.obra_contrato_nacion_uvi_fecha}} </div>
     <div class="row mx-md-n5"> {{form.obra_contrato_provincia_pesos.label}} {{form.obra_contrato_provincia_pesos}} </div>
     <div class="row mx-md-n5"> {{form.obra_contrato_provincia_uvi.label}} {{form.obra_contrato_provincia_uvi}} </div>
     <div class="row mx-md-n5"> {{form.obra_contrato_provincia_uvi_fecha.label}} {{form.obra_contrato_provincia_uvi_fecha}} </div>
+    <div class="row mx-md-n5"> {{form.obra_contrato_terceros_pesos.label}} {{form.obra_contrato_terceros_pesos}} </div>
+    <div class="row mx-md-n5"> {{form.obra_contrato_terceros_uvi.label}} {{form.obra_contrato_terceros_uvi}} </div>
+    <div class="row mx-md-n5"> {{form.obra_contrato_terceros_uvi_fecha.label}} {{form.obra_contrato_terceros_uvi_fecha}} </div>
+    <div class="row mx-md-n5"> {{form.obra_observaciones.label}} {{form.obra_observaciones}} </div>
+    <div class="row mx-md-n5"> {{form.obra_obra_madre.label}} {{form.obra_obra_madre}} </div>
     <input type='submit' value='Guardar' class="btn" />
 </form>
 </div>

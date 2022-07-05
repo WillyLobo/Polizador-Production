@@ -8,26 +8,28 @@
 
 {{ form.media.css }}
 
-<div class="container">
+<div class="container-fluid">
 <form action="{% url "carga:update-certificado" object.id %}" method="POST"> 
 
 {% csrf_token %}
 {{ form.errors }}
-    <div class="row mx-md-n5"> {{form.certificado_programa.label}} {{ form.certificado_programa }} </div>
-    <div class="row mx-md-n5"> {{form.certificado_obra.label}} {{ form.certificado_obra }} </div>
-    <div class="row mx-md-n5"> {{form.certificado_localidad.label}} {{ form.certificado_localidad }} </div>
-    <div class="row mx-md-n5"> {{form.certificado_empresa.label}} {{ form.certificado_empresa }} </div>
-    <div class="row mx-md-n5"> {{form.certificado_rubro_obra.label}} {{ form.certificado_rubro_obra }} </div>
-    <div class="row mx-md-n5"> {{form.certificado_rubro_anticipo.label}} {{ form.certificado_rubro_anticipo }} </div>
-    <div class="row mx-md-n5"> {{form.certificado_rubro_devanticipo.label}} {{ form.certificado_rubro_devanticipo }} </div>
-    <div class="row mx-md-n5"> {{form.certificado_rubro_691.label}} {{ form.certificado_rubro_691 }} </div>    
-    <div class="row mx-md-n5"> {{form.certificado_rubro_terreno.label}} {{ form.certificado_rubro_terreno }} </div>
-    <div class="row mx-md-n5"> {{form.certificado_rubro_recomposicion.label}} {{ form.certificado_rubro_recomposicion }} </div>
-    <div class="row mx-md-n5"> {{form.certificado_expediente.label}} {{ form.certificado_expediente }} </div>
-    <div class="row mx-md-n5"> {{form.certificado_fecha.label}} {{ form.certificado_fecha }} </div>
-    <div class="row mx-md-n5"> {{form.certificado_monto_pesos.label}} {{ form.certificado_monto_pesos }} </div>
-    <div class="row mx-md-n5"> {{form.certificado_monto_uvi.label}} {{ form.certificado_monto_uvi }} </div>
-    <input type='submit' value='Guardar' />
+<div class="row mx-md-n5"> {{form.certificado_obra.label}} {{ form.certificado_obra }} </div>
+<div class="row row-cols-3">
+  <div class="col-auto"> <small>{{form.certificado_financiamiento.label}}</small> {{ form.certificado_financiamiento }} </div>
+  <div class="col-auto"> <small>{{form.certificado_rubro_anticipo.label}}</small> {{ form.certificado_rubro_anticipo }} </div>
+  <div class="col-auto"> <small>{{form.certificado_rubro_obra.label}}</small> {{ form.certificado_rubro_obra }} </div>
+  <div class="col-auto"> <small>{{form.certificado_rubro_devanticipo.label}}</small> {{ form.certificado_rubro_devanticipo }} </div>
+</div>
+<div class="row mx-md-n5"> {{form.certificado_expediente.label}} {{ form.certificado_expediente }} </div>
+<div class="row mx-md-n5"> Fecha de Medición(Tal como figura en la Foja de Medición) {{ form.certificado_fecha }} </div>
+<div class="row mx-md-n5"> {{form.certificado_monto_pesos.label}} (Monto sin Descuento de Anticipo) {{ form.certificado_monto_pesos }} </div>
+<div class="row mx-md-n5"> {{form.certificado_mes_pct.label}} {{ form.certificado_mes_pct }} </div>
+<div class="row mx-md-n5"> {{form.certificado_ante_pct.label}} {{ form.certificado_ante_pct }} </div>
+<div class="row mx-md-n5"> {{form.certificado_acum_pct.label}} {{ form.certificado_acum_pct }} </div>
+<div class="row mx-md-n5"> {{form.certificado_devolucion_expediente.label}} {{ form.certificado_devolucion_expediente }} </div>
+<div class="row mx-md-n5"> {{form.certificado_devolucion_monto.label}} {{ form.certificado_devolucion_monto }} </div>
+<div class="row mx-md-n5"> {{form.certificado_monto_uvi.label}} (Monto Final en UVI) {{ form.certificado_monto_uvi }} </div>
+<input type='submit' value='Guardar' class="btn" />
 </form>
 </div>
 
@@ -36,11 +38,7 @@
 <script>
 $(function () {
     $.datetimepicker.setLocale('es');
-    $("#id_obra_fecha_entrega").datetimepicker({
-    timepicker:false,
-    format: 'd/m/Y',
-    });
-    $("#id_obra_fecha_contrato").datetimepicker({
+    $("#id_certificado_fecha").datetimepicker({
     timepicker:false,
     format: 'd/m/Y',
     });
