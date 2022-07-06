@@ -199,7 +199,7 @@ class Obra(models.Model):
     obra_soluciones		    = models.DecimalField("Cantidad de soluciones", max_digits=4, decimal_places=0, null=True, blank=True)
     obra_empresa		    = models.ForeignKey("Empresa", on_delete=models.CASCADE, verbose_name="Obra_Empresa")
     obra_localidad		    = models.ForeignKey("Localidad", on_delete=models.CASCADE)
-    obra_conjunto_licitado  = models.ForeignKey("ConjuntoLicitado", on_delete=models.DO_NOTHING, blank=True, null=True, verbose_name="ConjuntoLicitado")
+    obra_conjunto_licitado  = models.ForeignKey("SubConjuntoLicitado", on_delete=models.DO_NOTHING, blank=True, null=True, verbose_name="ConjuntoLicitado")
     obra_grupo              = models.CharField("Grupo", max_length=4, blank=True, null=True)
     obra_plazo              = models.CharField("Plazo de Ejecución", max_length=10, blank=True, null=True)
     obra_programa		    = models.ForeignKey("Programa", on_delete=models.CASCADE)
@@ -335,8 +335,14 @@ class ConjuntoLicitado(models.Model):
     conjunto_soluciones = models.DecimalField("Cantidad de Soluciones", max_digits=5, decimal_places=0, default=0, null=True, blank=True)
     conjunto_resolucion = models.CharField("Resolucion", max_length=15, null=True, blank=True)
 
+    def __str__(self):
+        return f"{self.conjunto_nombre}"
+
 class SubConjuntoLicitado(models.Model):
     subconjunto_nombre = models.TextField("Nombre")
     subconjunto_soluciones = models.DecimalField("Cantidad de Soluciones", max_digits=5, decimal_places=0, default=0, null=True, blank=True)
     subconjunto_resolucion = models.CharField("Resolucion", max_length=15, null=True, blank=True)
     subconjunto_conjunto = models.ForeignKey("ConjuntoLicitado", on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.subconjunto_nombre}"
