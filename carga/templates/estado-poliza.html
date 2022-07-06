@@ -54,7 +54,7 @@
             <td>{{instance.poliza_movimiento_receptor}}</td>
             <td>{{instance.poliza_movimiento_area}}</td>
             <td>{{instance.poliza_movimiento_editor}}</td>
-            <td><a href="{% url "carga:update-poliza-movimiento" instance.id %}"><img src="/static/edit.png" alt="Editar" width="30" heigth="30 /"></a></td>
+            <td><a href="{% url "carga:update-poliza-movimiento" instance.id %}"><img src="/static/edit.png" alt="Editar" width="30" heigth="30 /"></a><a href="{% url "carga:imprimir-poliza-movimiento" instance.id %}"><img src="/static/print.png" alt="Editar" width="30" heigth="30 /"></a></td>
         </tr>
         {% endfor %}
     </tbody>

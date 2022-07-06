@@ -32,6 +32,12 @@ class UpdatePoliza(LoginRequiredMixin, generic.UpdateView):
 	form_class = forms.PolizaForm
 	success_url = reverse_lazy("api:polizas")
 
+	def form_valid(self, form):
+		self.object = form.save(commit=False)
+		self.object.poliza_editor = self.request.user
+		self.object.save()
+		return super().form_valid(form)
+
 class CrearPolizaMovimiento(LoginRequiredMixin, generic.CreateView):
 	login_url = "/"
 	redirect_field_name = "login"
@@ -39,6 +45,12 @@ class CrearPolizaMovimiento(LoginRequiredMixin, generic.CreateView):
 	template_name = "crear-movimiento-poliza.html"
 	form_class = forms.PolizaMovimientoForm
 	success_url = reverse_lazy("api:polizas")
+
+	def form_valid(self, form):
+		self.object = form.save(commit=False)
+		self.object.poliza_movimiento_editor = self.request.user
+		self.object.save()
+		return super().form_valid(form)
 
 class UpdatePolizaMovimiento(LoginRequiredMixin, generic.UpdateView):
 	login_url = "/"
@@ -48,9 +60,23 @@ class UpdatePolizaMovimiento(LoginRequiredMixin, generic.UpdateView):
 	form_class = forms.PolizaMovimientoForm
 	success_url = reverse_lazy("api:polizas")
 
-class EstadoPoliza(generic.DetailView):
+	def form_valid(self,form):
+		self.object = form.save(commit=False)
+		self.object.poliza_movimiento_editor = self.request.user
+		self.object.save()
+		return super().form_valid(form)
+
+class EstadoPoliza(LoginRequiredMixin, generic.DetailView):
+	login_url = "/"
+	redirect_field_name = "login"
 	model = models.Poliza
 	template_name = "estado-poliza.html"
+
+class ImprimirPolizaMovimiento(LoginRequiredMixin, generic.DetailView):
+	login_url = "/"
+	redirect_field_name = "login"
+	model = models.Poliza_Movimiento
+	template_name = "imprimir-poliza.html"
 
 class ImprimirLegacyPoliza(LoginRequiredMixin, generic.DetailView):
 	login_url = "/"
@@ -147,7 +173,9 @@ class UpdateCertificado(LoginRequiredMixin, generic.UpdateView):
 	form_class = forms.CertificadoForm
 	success_url = reverse_lazy("api:certificados")
 
-class EstadoObra(generic.DetailView):
+class EstadoObra(LoginRequiredMixin, generic.DetailView):
+	login_url = "/"
+	redirect_field_name = "login"
 	model = models.Obra
 	template_name = "estado-obra.html"
 # Import/export plugin

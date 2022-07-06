@@ -28,6 +28,8 @@ poliza_patterns = [
 movimiento_patterns = [
 	path("crear/poliza/movimiento/", views.CrearPolizaMovimiento.as_view(), name="crear-poliza-movimiento"),
 	path("crear/poliza/movimiento/<pk>", views.UpdatePolizaMovimiento.as_view(), name="update-poliza-movimiento"),
+	path("crear/poliza/movimiento/imprimir/<pk>", views.ImprimirPolizaMovimiento.as_view(), name="imprimir-poliza-movimiento"),
+
 ]
 legacy_patterns = [
 	path("crear/legacy_poliza/", views.CrearLegacyPoliza.as_view(), name="legacy-crear-poliza"),

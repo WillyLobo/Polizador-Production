@@ -97,7 +97,7 @@ class Poliza_Movimiento(models.Model):
     poliza_movimiento_fecha     = models.DateField("Fecha")
     poliza_movimiento_receptor  = models.ForeignKey("Receptor", on_delete=models.CASCADE)
     poliza_movimiento_area      = models.ForeignKey("Area", on_delete=models.CASCADE)
-    poliza_movimiento_editor    = models.ForeignKey(User, on_delete=models.CASCADE)
+    poliza_movimiento_editor    = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, editable=False)
     poliza_movimiento_numero    = models.ForeignKey("Poliza", on_delete=models.CASCADE)
 
     def __str__(self):
