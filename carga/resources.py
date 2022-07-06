@@ -107,3 +107,11 @@ class CertificadoResource(resources.ModelResource):
 		model = models.Certificado
 	
 	certificado_obra = fields.Field(column_name="certificado_obra", attribute="certificado_obra", widget=ForeignKeyWidget(models.Obra, "obra_nombre",))
+
+class ConjuntoLicitadoResource(resources.ModelResource):
+	class Meta:
+		model = models.ConjuntoLicitado
+	
+class SubConjuntoLicitadoResource(resources.ModelResource):
+	class Meta:
+		model = models.SubConjuntoLicitado

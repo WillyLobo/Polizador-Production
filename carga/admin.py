@@ -53,6 +53,12 @@ class AgenteAdmin(ImportExportMixin, admin.ModelAdmin):
 class CertificadoAdmin(ImportExportMixin, admin.ModelAdmin):
 	resource_class = resources.CertificadoResource
 
+class ConjuntoLicitadoAdmin(ImportExportMixin, admin.ModelAdmin):
+	resource_class = resources.ConjuntoLicitadoResource
+
+class SubConjuntoLicitadoAdmin(ImportExportMixin, admin.ModelAdmin):
+	resource_class = resources.SubConjuntoLicitadoResource
+
 admin.site.register(models.Receptor, ReceptorAdmin)
 admin.site.register(models.Area, AreaAdmin)
 admin.site.register(models.Aseguradora, AseguradoraAdmin)
@@ -68,3 +74,5 @@ admin.site.register(models.Agente, AgenteAdmin)
 admin.site.register(models.Certificado, CertificadoAdmin)
 admin.site.register(models.Poliza, PolizaAdmin)
 admin.site.register(models.Poliza_Movimiento, PolizaMovimientoAdmin)
+admin.site.register(models.ConjuntoLicitado, ConjuntoLicitadoAdmin)
+admin.site.register(models.SubConjuntoLicitado, SubConjuntoLicitadoAdmin)

@@ -1,6 +1,5 @@
 from datetime import datetime
 from re import T
-from statistics import mode
 from wsgiref.validate import validator
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
@@ -217,14 +216,14 @@ class Obra(models.Model):
     obra_expediente_costo   = models.CharField("Expediente de Costos", max_length=18, blank=True, null=True)
     obra_inspector          = models.ManyToManyField("Agente", related_name="obra_inspector")
     obra_observaciones      = models.TextField("Observaciones:", blank=True, null=True)
-    obra_contrato_nacion_pesos   = models.DecimalField("Monto Nación en Pesos: ", max_digits=12 ,decimal_places=2, validators=[MinValueValidator(0)], blank=True, null=True)
-    obra_contrato_nacion_uvi     = models.DecimalField("Monto Nación en UVI: ", max_digits=12 ,decimal_places=2, validators=[MinValueValidator(0)], blank=True, null=True)
+    obra_contrato_nacion_pesos   = models.DecimalField("Monto Nación en Pesos: ", max_digits=12 ,decimal_places=2, default=0, validators=[MinValueValidator(0)], blank=True, null=True)
+    obra_contrato_nacion_uvi     = models.DecimalField("Monto Nación en UVI: ", max_digits=12 ,decimal_places=2, default=0, validators=[MinValueValidator(0)], blank=True, null=True)
     obra_contrato_nacion_uvi_fecha = models.DateField("Fecha UVI Nación: ", blank=True, null=True)
-    obra_contrato_provincia_pesos = models.DecimalField("Monto Provincia en Pesos: ", max_digits=12 ,decimal_places=2, validators=[MinValueValidator(0)], blank=True, null=True)
-    obra_contrato_provincia_uvi  = models.DecimalField("Monto Provincia en UVI: ", max_digits=12 ,decimal_places=2, validators=[MinValueValidator(0)], blank=True, null=True)
+    obra_contrato_provincia_pesos = models.DecimalField("Monto Provincia en Pesos: ", max_digits=12 ,decimal_places=2, default=0 , validators=[MinValueValidator(0)], blank=True, null=True)
+    obra_contrato_provincia_uvi  = models.DecimalField("Monto Provincia en UVI: ", max_digits=12 ,decimal_places=2, default=0, validators=[MinValueValidator(0)], blank=True, null=True)
     obra_contrato_provincia_uvi_fecha = models.DateField("Fecha UVI Provicia: ", blank=True, null=True)
-    obra_contrato_terceros_pesos   = models.DecimalField("Monto Terceros en Pesos: ", max_digits=12 ,decimal_places=2, validators=[MinValueValidator(0)], blank=True, null=True)
-    obra_contrato_terceros_uvi     = models.DecimalField("Monto Terceros en UVI: ", max_digits=12 ,decimal_places=2, validators=[MinValueValidator(0)], blank=True, null=True)
+    obra_contrato_terceros_pesos   = models.DecimalField("Monto Terceros en Pesos: ", max_digits=12 ,decimal_places=2, default=0, validators=[MinValueValidator(0)], blank=True, null=True)
+    obra_contrato_terceros_uvi     = models.DecimalField("Monto Terceros en UVI: ", max_digits=12 ,decimal_places=2, default=0, validators=[MinValueValidator(0)], blank=True, null=True)
     obra_contrato_terceros_uvi_fecha = models.DateField("Fecha UVI Terceros: ", blank=True, null=True)
     obra_contrato_total_pesos   = models.DecimalField("Monto Total Pesos", max_digits=12, decimal_places=2, default=0, editable=False)
     obra_contrato_total_uvi   = models.DecimalField("Monto Total UVI", max_digits=12, decimal_places=2, default=0, editable=False)
@@ -335,3 +334,9 @@ class ConjuntoLicitado(models.Model):
     conjunto_nombre = models.TextField("Nombre")
     conjunto_soluciones = models.DecimalField("Cantidad de Soluciones", max_digits=5, decimal_places=0, default=0, null=True, blank=True)
     conjunto_resolucion = models.CharField("Resolucion", max_length=15, null=True, blank=True)
+
+class SubConjuntoLicitado(models.Model):
+    subconjunto_nombre = models.TextField("Nombre")
+    subconjunto_soluciones = models.DecimalField("Cantidad de Soluciones", max_digits=5, decimal_places=0, default=0, null=True, blank=True)
+    subconjunto_resolucion = models.CharField("Resolucion", max_length=15, null=True, blank=True)
+    subconjunto_conjunto = models.ForeignKey("ConjuntoLicitado", on_delete=models.CASCADE, null=True, blank=True)
