@@ -19,7 +19,6 @@
                 <th> Monto Sustituido(UVI) </th>
                 <th> Editor </th>
                 <th> Ultimo Editor </th>
-                <th> Pases </th>
               </tr>
           </thead>
           <tfoot>
@@ -38,7 +37,6 @@
               <th> Monto Sustituido(UVI) </th>
               <th> Editor </th>
               <th> Ultimo Editor </th>
-              <th> Pases </th>
             </tr>
         </tfoot>
       </table>
@@ -64,13 +62,12 @@
       {"targets": 0, 
         "data": "id", 
         "render": function(data, type, row, meta) 
-        {return '<a href="/polizas/crear/poliza/'+data+'"><img src="/static/edit.png" alt="Editar" width="30" height="30"/></a>';} 
+        {return '<a href="/polizas/crear/poliza/'+data+'"><img src="/static/edit.png" alt="Editar" width="30" height="30"/></a><a href="/polizas/crear/poliza/estado/'+data+'"><img src="/static/print.png" alt="Pases" width="30" height="30"/></a>';} 
       },
-      {"targets": -1, 
-        "data": "id", 
-        "render": function(data, type, row, meta) 
-        {return '<a href="/polizas/crear/poliza/estado/'+data+'"><img src="/static/print.png" alt="Pases" width="30" height="30"/></a>';}
-      }
+      {
+        targets: 9,
+        render: $.fn.dataTable.render.ellipsis(75),
+      },
     ],
       columns: [
         {"data":"id", searchable: false, orderable: false},
@@ -89,7 +86,6 @@
         {"data":"poliza_monto_uvi"},
         {"data":"poliza_creador", searchable: false},
         {"data":"poliza_editor", searchable: false},
-        {"data":"id", searchable: false, orderable: false},
       ],
     });
     TablePoliza.buttons().container()

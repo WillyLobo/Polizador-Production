@@ -77,7 +77,14 @@ $(document).ready( function() {
       "className": "dt-center", "targets": "_all" 
     },
     {"targets": -1, "data": "id", "render": function ( data, type, row, meta ) 
-		{ return '<a href="/polizas/crear/certificado/'+data+'"><img src="/static/edit.png" alt="Editar" width="30" heigth="30 /"></a>';} }
+		{ return '<a href="/polizas/crear/certificado/'+data+'"><img src="/static/edit.png" alt="Editar" width="30" heigth="30 /"></a>'
+    ;} },
+    {
+      targets: 5,
+      render: $.fn.dataTable.render.ellipsis(50),
+    },
+  //  {targets: 5, data:"certificado_obra.id", render: function(data, type, row, meta)
+  //  { return data }  }
     ],
     "columns": [
             {"data": "id", searchable: false},
@@ -125,28 +132,6 @@ $(document).ready( function() {
       });
       TableCertificado.buttons().container()
     .appendTo( $('.col-sm-6:eq(0)', TableCertificado.table().container() ) );
-yadcf.init(TableCertificado, [
-        {
-          // Programa
-          column_number: 1,
-					filter_type: "select",
-          filter_default_label: "Filtrar"
-        },
-        {
-          // Localidad
-          column_number: 6,
-					filter_type: "select",
-          filter_default_label: "Filtrar"
-        },
-        {
-          // Periodo
-          column_number: 11,
-					filter_type: "select",
-          filter_default_label: "Filtrar"
-        },
-        ],
-        "footer",
-        );
       });
 </script>
 

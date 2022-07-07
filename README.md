@@ -17,15 +17,15 @@
 
 # Monthly Certification View
 
-1. [ ] Create Model
-    - [ ] Fields: *Programa, *ACU, *Numero_de-orden, *empresa, *cant_viv, *denominacion, *localidad, *n_expte, n_ant, n_cert, n_dev_ant, periodo, mes_pesos, mes_%, ante_%, acum_%, n_expte_devolucion, devolucion, monto_cobrar, uvis
+1. [x] Create Model
+    - [x] Fields: *Programa, *ACU, *Numero_de-orden, *empresa, *cant_viv, *denominacion, *localidad, *n_expte, n_ant, n_cert, n_dev_ant, periodo, mes_pesos, mes_%, ante_%, acum_%, n_expte_devolucion, devolucion, monto_cobrar, uvis
 # Certificador #
 
 # TODO List: #
 
-1. [ ] Create models
+1. [X] Create models
     - [x] "Certificados"
-        - [ ] Add progress percentiles
+        - [x] Add progress percentiles
     - [x] "Obra"
     - [x] "Programa"
     - [x] "Empresa"
@@ -41,16 +41,16 @@
     - [x] Datatables View
 4. [x] Add Admin Import/Export functions for the models.
 5. [ ] -
-6. [ ] Create "Prototipos" model/views
-    - [x] "Prototipo" model
+6. [ ] Create "Prototipos" model/views *Remove This Models*
+    - [ ] "Prototipo" model
     - [ ] "Prototipo" CreateView
     - [ ] "Prototipo" UpdateView
-7. [ ] Create "Contrato" models/views
-    - [x] "Contrato" model
+7. [ ] Create "Contrato" models/views *Remove This Models*
+    - [ ] "Contrato" model
     - [ ] "Contrato" form to attach CreateWithInlines
     - [ ] "Contrato" CreateView
     - [ ] "Contrato" UpdateView
-8. [ ] Create "Obra" model/views
+8. [x] Create "Obra" model/views
     - [x] "Obra" model
     - [x] "Obra" API endpoint
     - [x] "Obra" CreateView
