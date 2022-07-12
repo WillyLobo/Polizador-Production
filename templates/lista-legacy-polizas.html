@@ -67,7 +67,7 @@
       "language": {"url": 'https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json'},
       "ajax": {"url": "/api/api/legacy_polizas/?format=datatables"},
       columnDefs: [{"targets": 0, "data": "id", "render": function ( data, type, row, meta ) 
-		{ return '<a href="/polizas/legacy_update/'+data+'"><img src="/static/edit.png" alt="Editar" width="30" height="30"/></a><a href="/polizas/legacy_imprimir/'+data+'"><img src="/static/print.png" alt="Imprimir" width="30" height="30"/></a>';} }],
+		{ return '<a href="/polizas/legacy_update/'+data+'"><img src="/static/edit.png" title="Editar" width="30" height="30"/></a><a href="/polizas/legacy_imprimir/'+data+'"><img src="/static/print.png" title="Imprimir" width="30" height="30"/></a>';} }],
       columns: [
         {"data":"id", searchable: false, orderable: false},
         {"data":"legacy_poliza_fecha"},

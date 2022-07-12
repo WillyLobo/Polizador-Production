@@ -178,6 +178,14 @@ class EstadoObra(LoginRequiredMixin, generic.DetailView):
 	redirect_field_name = "login"
 	model = models.Obra
 	template_name = "estado-obra.html"
+
+class CertificadoView(LoginRequiredMixin, generic.DetailView):
+	login_url = "/"
+	redirect_field_name = "login"
+	model = models.Certificado
+	template_name = "certificado.html"
+
+
 # Import/export plugin
 # def export(request):
 # 	obra_resource = ObraResource()

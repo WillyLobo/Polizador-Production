@@ -12,8 +12,11 @@ urlpatterns = [
 	#path("crear/poliza/", views.CrearLegacyPoliza.as_view(), name="legacy-crear-poliza"),
 	path("crear/empresa/", views.CrearEmpresa.as_view(), name="crear-empresa"),
 	path("crear/empresa/<pk>", views.UpdateEmpresa.as_view(), name="update-empresa"),
+]
+certificado_patterns = [
 	path("crear/certificado/", views.CrearCertificado.as_view(), name="crear-certificado"),
-	path("crear/certificado/<pk>", views.UpdateCertificado.as_view(), name="update-certificado")
+	path("crear/certificado/<pk>", views.UpdateCertificado.as_view(), name="update-certificado"),
+	path("crear/certificado/detalle/<pk>", views.CertificadoView.as_view(), name="detalle-certificado")
 ]
 obra_patterns = [
 	path("crear/obra/", views.CrearObra.as_view(), name="crear-obra"),
@@ -37,6 +40,7 @@ legacy_patterns = [
 	path("legacy_update/<pk>", views.UpdateLegacyPoliza.as_view(), name="legacy-update-poliza"),
 ]
 
+urlpatterns += certificado_patterns
 urlpatterns += legacy_patterns
 urlpatterns += poliza_patterns
 urlpatterns += movimiento_patterns
